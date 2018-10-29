@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <zip basedir="/home/andy/gse-ws-2018-abadner/target/appassembler/" excludes="" destfile="/home/andy/gse-ws-2018-abadner/target/chessgame-0.0.1-SNAPSHOT.zip"/>
+</target>
+</project>
