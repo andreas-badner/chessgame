@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.2">
+<file name="/home/andy/gse-ws-2018-abadner/src/main/java/de/techfak/gse/abadner/ChessGame.java">
+<error line="3" severity="info" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+</file>
+</checkstyle>
