@@ -14,7 +14,10 @@ public class ChessGame {
     public static void main(final String... args) {
         System.out.println("Hello abadner!");
         if (args.length == 0) { //Kein Startparameter
-            System.out.println("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w"); //Gibt Grundstellung in FEN aus
+            System.out.println("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w");  //Gibt Grundstellung in FEN aus
+        } else {
+            String schachstellung = args[0];
+            System.out.println(schachstellung);
         }
         Scanner reader = new Scanner(System.in);
         String input =  reader.nextLine();
