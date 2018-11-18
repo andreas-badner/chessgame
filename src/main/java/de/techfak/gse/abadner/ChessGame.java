@@ -6,40 +6,57 @@ import java.util.Scanner;
  * ChessGame Hauptklasse - Zur Ausgabe des Spielfelds unter bedingten Eingaben.
  */
 public class ChessGame {
-    private static final int COLUMN_COUNT = 8;
+    static final int COLUMN_ROW_COUNT = 8;
 
-    private static final int ROW_COUNT = 8;
+    static final int FOR_LOOP_ZERO = 0;
 
-    private static final int FOR_LOOP_ZERO = 0;
+    static final int LAST_ARRAY_BOARD = 7;
 
-    private static final int SECOND_COLUMN = 2;
-
-    private static final int THIRD_COLUMN = 3;
-
-    private static final int FOURTH_COLUMN = 4;
-
-    private static final int FIFTH_COLUMN = 5;
-
-    private static final int SIXTH_COLUMN = 6;
-
-    private static final int SEVENTH_COLUMN = 7;
-
-    private static final int EIGHTH_COLUMN = 8;
+    private static int errorcode = 0;
 
     private static final int INVALID_INPUT_ERROR = 100;
+
+    private static final int INVALID_TURN_ERROR = 101;
+
+    private static boolean userinput = true;
+
+    private static final String VALID_INPUT_CHARS = "prnbqkPRNBQK";
+
+    private static final String VALID_INPUT_NUMBERS = "1234567";
+
+    private static final String VALID_TURN_CHARS = "abcdefgh";
+
+    private static final String VALID_TURN_NUMBERS = "12345678";
 
     /**
      * @param args nimmt Startparameter und gibt es weiter zur Ueberpruefung
      */
     public static void main(final String... args) {
         System.out.println("Hello abadner!");
-        int errorCode = 0;
+        ChessBoard chessboard = new ChessBoard();
         try {
             checkStartInput(args);
-        } catch (ChessException chessexception) {
-            errorCode = INVALID_INPUT_ERROR;
+            while (userinput) {
+                userTurn(args);
+            }
+        } catch (ChessException e) {
+            errorcode = INVALID_INPUT_ERROR;
         }
-        System.exit(errorCode);
+        System.exit(errorcode);
+    }
+
+    /**
+     * @param schachstellung aktuelle Schachstellung zur Auswertung des Zuges
+     * @return aktualisierte Schachstellung
+     */
+    private static String[] userTurn(String[] schachstellung) throws ChessException {
+        final Scanner reader = new Scanner(System.in);
+        final String turns = reader.nextLine();
+        if (turns.equals("")) { //Leere Eingabe zum beenden der Applikation
+            System.out.println("Programm wird beendet");
+            reader.close();
+            userinput = false;
+        }
     }
 
     /**
@@ -55,13 +72,6 @@ public class ChessGame {
             }
         } else { //unzulaessiger Startparameter {
             System.out.println("Error Code 100");
-
-            final Scanner reader = new Scanner(System.in);
-            final String userinput = reader.nextLine();
-            if (userinput.equals("")) { //Leere Eingabe zum beenden der Applikation
-                System.out.println("Applikation wird beendet");
-                reader.close();
-            }
         }
     }
 
@@ -71,60 +81,34 @@ public class ChessGame {
      * KOMPLEXITAET VERBESSERN
      */
     private static boolean validString(String boardinput, String starterplayer) throws ChessException {
-        final String[] zeilen = boardinput.split("/", COLUMN_COUNT);
-        for (int i = FOR_LOOP_ZERO; i < ROW_COUNT; i++) {
+        final String[] zeilen = boardinput.split("/", COLUMN_ROW_COUNT);
+        for (int i = FOR_LOOP_ZERO; i < COLUMN_ROW_COUNT; i++) {
             int rowsum = 0;
+            char currentchar;
             for (int j = FOR_LOOP_ZERO; j < zeilen[i].length(); j++) {
-                switch (zeilen[i].charAt(j)) {
-                    case 'r':
-                    case 'n':
-                    case 'b':
-                    case 'q':
-                    case 'k':
-                    case 'p':
-                    case '1':
-                        rowsum++;
-                        break;
-                    case 'R':
-                    case 'N':
-                    case 'B':
-                    case 'Q':
-                    case 'K':
-                    case 'P':
-                        rowsum++;
-                        break;
-                    case '2':
-                        rowsum += SECOND_COLUMN;
-                        break;
-                    case '3':
-                        rowsum += THIRD_COLUMN;
-                        break;
-                    case '4':
-                        rowsum += FOURTH_COLUMN;
-                        break;
-                    case '5':
-                        rowsum += FIFTH_COLUMN;
-                        break;
-                    case '6':
-                        rowsum += SIXTH_COLUMN;
-                        break;
-                    case '7':
-                        rowsum += SEVENTH_COLUMN;
-                        break;
-                    case '8':
-                        rowsum += EIGHTH_COLUMN;
-                        break;
-                    default:
-                        throw new ChessException();
+                currentchar = zeilen[i].charAt(j);
+                if (VALID_INPUT_CHARS.indexOf(currentchar) >= 0) {
+                    rowsum++;
+                    ChessBoard.insertChessPiece(i, j, currentchar);
+                } else if (VALID_INPUT_NUMBERS.indexOf(currentchar) >= 0) {
+                    rowsum += Character.getNumericValue(currentchar);
+                    for (int k = FOR_LOOP_ZERO; k < Character.getNumericValue(currentchar); k++) {
+                        ChessBoard.insertChessPiece(i, k, '0');
+                    }
+                } else {
+                    errorcode = INVALID_INPUT_ERROR;
+                    throw new ChessException();
                 }
             }
-            if (rowsum != COLUMN_COUNT) {
+            if (rowsum != COLUMN_ROW_COUNT) {
+                errorcode = INVALID_INPUT_ERROR;
                 throw new ChessException();
             }
         }
         if (starterplayer.length() == 1 && (starterplayer.equals("w") || starterplayer.equals("b"))) {
             return true;
         } else {
+            errorcode = INVALID_INPUT_ERROR;
             throw new ChessException();
         }
     }

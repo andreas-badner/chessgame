@@ -1,10 +1,11 @@
 package de.techfak.gse.abadner;
 
 /**
- * Klasse zum Abfangen der Exceptions.
+ * Klasse zum Abfangen von Exceptions.
  */
 class ChessException extends Exception {
-     ChessException() {
-        super("Unerlaubte Stellung");
+    ChessException() {
+        super("Fehler.");
     }
 }
+
