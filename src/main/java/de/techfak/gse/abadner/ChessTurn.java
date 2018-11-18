@@ -77,7 +77,7 @@ class ChessTurn {
                             String chesspiece = chessboard.getChessPiece(startrow, startcolumn);
                             boolean whitepiece = chesspiece.equals(chesspiece.toUpperCase());
                             if (whiteturn && whitepiece || !whiteturn && !whitepiece) {
-                                if (startrow != endrow && startcolumn != endcolumm) {
+                                if (startrow != endrow || startcolumn != endcolumm) {
                                     chessboard.insertChessPiece(startrow, startcolumn, "1");
                                     chessboard.insertChessPiece(endrow, endcolumm, chesspiece);
                                     whiteturn = !whiteturn;
