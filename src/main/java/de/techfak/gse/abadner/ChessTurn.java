@@ -11,6 +11,8 @@ class ChessTurn {
 
     static final int FOR_LOOP_ZERO = 0;
 
+    private static boolean whiteturn;
+
     private static final String VALID_INPUT_CHARS = "prnbqkPRNBQK";
 
     private static final String VALID_INPUT_NUMBERS = "12345678";
@@ -21,13 +23,19 @@ class ChessTurn {
 
     private static final int FOURTH_CHAR = 3;
 
-    private static final int FITFH_CHAR = 4;
+    private static final int FIFTH_CHAR = 4;
 
     private static final int LENGTH_OF_TURN_INPUT = 5;
 
     private static final int INVALID_INPUT_ERROR = 100;
 
     private static final int INVALID_TURN_ERROR = 101;
+
+    private static final int INVALID_NO_PIECES = 102;
+
+    private static final int INVALID_TURN_ORDER = 103;
+
+    private static final int INVALID_NO_MOVE = 104;
 
     ChessTurn() {
     }
@@ -53,7 +61,7 @@ class ChessTurn {
                 char char1 = currentturn.charAt(1);
                 char char2 = currentturn.charAt(2);
                 char char3 = currentturn.charAt(FOURTH_CHAR);
-                char char4 = currentturn.charAt(FITFH_CHAR);
+                char char4 = currentturn.charAt(FIFTH_CHAR);
                 boolean validchar0 = VALID_TURN_CHARS.indexOf(char0) >= 0;
                 boolean validchar1 = VALID_TURN_NUMBERS.indexOf(char1) >= 0;
                 boolean validchar2 = char2 == '-';
@@ -67,10 +75,23 @@ class ChessTurn {
                         int endcolumm = VALID_TURN_CHARS.indexOf(char3);
                         if (chessboard.hasChessPiece(startrow, startcolumn)) {
                             String chesspiece = chessboard.getChessPiece(startrow, startcolumn);
-                            chessboard.insertChessPiece(startrow, startcolumn, "1");
-                            chessboard.insertChessPiece(endrow, endcolumm, chesspiece);
+                            boolean whitepiece = chesspiece.equals(chesspiece.toUpperCase());
+                            if (whiteturn && whitepiece || !whiteturn && !whitepiece) {
+                                if (startrow != endrow && startcolumn != endcolumm) {
+                                    chessboard.insertChessPiece(startrow, startcolumn, "1");
+                                    chessboard.insertChessPiece(endrow, endcolumm, chesspiece);
+                                    whiteturn = !whiteturn;
+                                } else {
+                                    ChessGame.changeExitCode(INVALID_NO_MOVE);
+                                    throw new ChessException();
+                                }
+                            } else {
+                                ChessGame.changeExitCode(INVALID_TURN_ORDER);
+                                throw new ChessException();
+                            }
+
                         } else {
-                            ChessGame.changeExitCode(INVALID_TURN_ERROR);
+                            ChessGame.changeExitCode(INVALID_NO_PIECES);
                             throw new ChessException();
                         }
                     }
@@ -79,6 +100,7 @@ class ChessTurn {
                     throw new ChessException();
                 }
             }
+            System.out.println(chessboard.createCurrentChessBoard());
         }
     }
 
@@ -118,7 +140,7 @@ class ChessTurn {
         char currentchar;
         for (int i = FOR_LOOP_ZERO; i < COLUMN_ROW_COUNT; i++) {
             int rowsum = 0;
-            int fillone = 0;
+            int fillone;
             for (int j = FOR_LOOP_ZERO; j < zeilen[i].length(); j++) {
                 currentchar = zeilen[i].charAt(j);
                 if (VALID_INPUT_CHARS.indexOf(currentchar) >= 0) {
@@ -140,13 +162,24 @@ class ChessTurn {
                 throw new ChessException();
             }
         }
-        if (starter.length() == 1 && (starter.equals("w") || starter.equals("b"))) {
-            return true;
+        if (starter.length() == 1) {
+            switch (starter) {
+                case "w":
+                    whiteturn = true;
+                    return true;
+                case "b":
+                    whiteturn = false;
+                    return true;
+                default:
+                    ChessGame.changeExitCode(INVALID_INPUT_ERROR);
+                    throw new ChessException();
+            }
         } else {
             ChessGame.changeExitCode(INVALID_INPUT_ERROR);
             throw new ChessException();
         }
     }
+
 
     static String getValidInputNumbers() {
         return VALID_INPUT_NUMBERS;

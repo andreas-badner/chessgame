@@ -17,7 +17,6 @@ public final class ChessGame {
             chessturn.checkStartInput(input, chessboard);
             while (userinput) {
                 chessturn.userTurn(chessboard);
-                System.out.println(chessboard.createCurrentChessBoard());
             }
         } catch (ChessException e) {
             System.exit(errorcode);

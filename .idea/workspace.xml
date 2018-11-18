@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e8eb280-d7c7-4c2d-8949-be0bd5615b09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/techfak/gse/abadner/ChessBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/techfak/gse/abadner/ChessBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/techfak/gse/abadner/ChessException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/techfak/gse/abadner/ChessException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/techfak/gse/abadner/ChessGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/techfak/gse/abadner/ChessGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/techfak/gse/abadner/ChessPiece.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/techfak/gse/abadner/ChessTurn.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/techfak/gse/abadner/ChessTurn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessTurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessTurn.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +23,7 @@
     <session id="-963663246">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.3" value="2" />
@@ -47,13 +40,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="18147" />
+          <entry key="java" value="19263" />
           <entry key="xml" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="18147" />
+          <entry key="JAVA" value="19263" />
           <entry key="XML" value="28" />
         </counts>
       </usages-collector>
@@ -76,9 +69,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            <state relative-caret-position="510">
+              <caret line="34" column="31" lean-forward="true" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
               <folding>
+                <element signature="e#974#975#0" expanded="true" />
+                <element signature="e#1006#1007#0" expanded="true" />
                 <element signature="e#1152#1153#0" expanded="true" />
                 <element signature="e#1187#1188#0" expanded="true" />
               </folding>
@@ -89,13 +84,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessTurn.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="130" column="63" lean-forward="true" selection-start-line="130" selection-start-column="63" selection-end-line="130" selection-end-column="63" />
+            <state relative-caret-position="454">
+              <caret line="93" column="72" lean-forward="true" selection-start-line="93" selection-start-column="72" selection-end-line="93" selection-end-column="72" />
               <folding>
-                <element signature="e#6535#6536#0" expanded="true" />
-                <element signature="e#6577#6578#0" expanded="true" />
-                <element signature="e#6619#6620#0" expanded="true" />
-                <element signature="e#6659#6660#0" expanded="true" />
+                <element signature="e#7963#7964#0" expanded="true" />
+                <element signature="e#8005#8006#0" expanded="true" />
+                <element signature="e#8047#8048#0" expanded="true" />
+                <element signature="e#8087#8088#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,7 +99,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
+            <state relative-caret-position="593">
               <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
               <folding>
                 <element signature="e#284#285#0" expanded="true" />
@@ -150,9 +145,9 @@
         <option value="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/InvalidTurnException.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/InvalidInputException.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessTurn.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessBoard.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessGame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessTurn.java" />
       </list>
     </option>
   </component>
@@ -225,7 +220,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542576646307" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542579499167" />
     <property name="last_opened_file_path" value="$USER_HOME$/gse-ws-2018" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
@@ -285,7 +280,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1008" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.17235859" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -296,16 +290,16 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994664" weight="0.44191343" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4994664" weight="0.2596811" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994664" weight="0.18792711" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4994664" weight="0.41230068" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32915717" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32915717" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053364" side_tool="true" weight="0.20842825" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="CheckStyle" order="10" sideWeight="0.4994664" weight="0.31321186" />
-      <window_info active="true" anchor="bottom" id="PMD" order="11" sideWeight="0.4994664" visible="true" weight="0.24031891" />
+      <window_info active="true" anchor="bottom" id="CheckStyle" order="10" sideWeight="0.4994664" visible="true" weight="0.31321186" />
+      <window_info anchor="bottom" id="PMD" order="11" sideWeight="0.4994664" weight="0.11161731" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.18906605" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24958494" />
@@ -379,22 +373,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessTurn.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="130" column="63" lean-forward="true" selection-start-line="130" selection-start-column="63" selection-end-line="130" selection-end-column="63" />
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
-            <element signature="e#6535#6536#0" expanded="true" />
-            <element signature="e#6577#6578#0" expanded="true" />
-            <element signature="e#6619#6620#0" expanded="true" />
-            <element signature="e#6659#6660#0" expanded="true" />
+            <element signature="e#170#171#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
+        <state relative-caret-position="593">
           <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
           <folding>
             <element signature="e#284#285#0" expanded="true" />
@@ -407,21 +398,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessTurn.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="454">
+          <caret line="93" column="72" lean-forward="true" selection-start-line="93" selection-start-column="72" selection-end-line="93" selection-end-column="72" />
           <folding>
-            <element signature="e#170#171#0" expanded="true" />
+            <element signature="e#7963#7964#0" expanded="true" />
+            <element signature="e#8005#8006#0" expanded="true" />
+            <element signature="e#8047#8048#0" expanded="true" />
+            <element signature="e#8087#8088#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="510">
+          <caret line="34" column="31" lean-forward="true" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
           <folding>
+            <element signature="e#974#975#0" expanded="true" />
+            <element signature="e#1006#1007#0" expanded="true" />
             <element signature="e#1152#1153#0" expanded="true" />
             <element signature="e#1187#1188#0" expanded="true" />
           </folding>
