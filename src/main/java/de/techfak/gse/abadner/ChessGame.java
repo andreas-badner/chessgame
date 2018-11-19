@@ -10,7 +10,6 @@ public final class ChessGame {
 
 
     private ChessGame(String[] input) {
-        System.out.println("Hello abadner!");
         final ChessBoard chessboard = new ChessBoard();
         final ChessTurn chessturn = new ChessTurn();
         try {

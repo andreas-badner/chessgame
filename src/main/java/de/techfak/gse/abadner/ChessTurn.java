@@ -46,7 +46,7 @@ class ChessTurn {
     void userTurn(ChessBoard chessboard) throws ChessException {
         final Scanner reader = new Scanner(System.in);
         final String turns = reader.nextLine();
-        if (turns.equals("")) { //Leere Eingabe zum beenden der Applikation
+        if (turns.length() == 0) { //Leere Eingabe zum beenden der Applikation
             System.out.println("Programm wird beendet");
             reader.close();
             ChessGame.exitApplication();
