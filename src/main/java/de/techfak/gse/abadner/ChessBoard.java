@@ -14,7 +14,7 @@ class ChessBoard {
     /**
      * Konstruktor der Klasse.
      */
-    ChessBoard() {
+    /* default */ChessBoard() {
         chessboardarr = new String[ChessTurn.COLUMN_ROW_COUNT][ChessTurn.COLUMN_ROW_COUNT];
     }
 
@@ -23,7 +23,7 @@ class ChessBoard {
      * @param column Position in der Spalte
      * @param piece  Figur, die platziert werden soll oder '0'.
      */
-    void insertChessPiece(int row, int column, String piece) {
+    /* default */ void insertChessPiece(final int row, final int column, final String piece) {
         chessboardarr[row][column] = piece;
     }
 
@@ -32,15 +32,8 @@ class ChessBoard {
      * @param column Position in der Spalte
      * @return true wenn eine Figur auf dem Feld ist
      */
-    boolean hasChessPiece(int row, int column) {
+    /* default */boolean hasChessPiece(final int row, final int column) {
         return (ChessTurn.getValidInputChars().contains(chessboardarr[row][column]));
-    }
-
-    /**
-     *
-     */
-    String[][] getChessboardarr() {
-        return this.chessboardarr;
     }
 
     /**
@@ -48,15 +41,15 @@ class ChessBoard {
      * @param column Position in der Spalte
      * @return gibt die Figur auf dem gesuchten Feld aus.
      */
-    String getChessPiece(int row, int column) {
+    /* default */String getChessPiece(final int row, final int column) {
         return (chessboardarr[row][column]);
     }
 
     /**
      * @return gibt die aktuelle Schachstellung zurueck.
      */
-    String createCurrentChessBoard() {
-        StringBuilder stringbuilder = new StringBuilder();
+    /* default */String createCurrentChessBoard() {
+        final StringBuilder stringbuilder = new StringBuilder();
         for (int i = ChessTurn.FOR_LOOP_ZERO; i < ChessTurn.COLUMN_ROW_COUNT; i++) {
             int sum = 0;
             for (int j = ChessTurn.FOR_LOOP_ZERO; j < ChessTurn.COLUMN_ROW_COUNT; j++) {
@@ -76,7 +69,7 @@ class ChessBoard {
                 }
             }
             if (i < LAST_ARRAY_BOARD) {
-                stringbuilder.append("/");
+                stringbuilder.append('/');
             }
         }
         stringbuilder.append(" " + ChessTurn.getTurnOrder());

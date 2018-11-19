@@ -5,8 +5,7 @@ package de.techfak.gse.abadner;
  */
 @SuppressWarnings("serial")
 class ChessException extends Exception {
-    ChessException() {
+    /* default */ChessException() {
         super("Fehler.");
     }
 }
-

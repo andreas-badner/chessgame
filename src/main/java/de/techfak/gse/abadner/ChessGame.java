@@ -8,14 +8,16 @@ public final class ChessGame {
 
     private static int errorcode = 0;
 
-
-    private ChessGame(String[] input) {
+    /**
+     * Konstruktor der Klasse - ruft alle benoetigten Methoden auf.
+     * @param input uebergebener Startparameter
+     */
+    private ChessGame(final String[] input) {
         final ChessBoard chessboard = new ChessBoard();
-        final ChessTurn chessturn = new ChessTurn();
         try {
-            chessturn.checkStartInput(input, chessboard);
+            ChessTurn.checkStartInput(input, chessboard);
             while (userinput) {
-                chessturn.userTurn(chessboard);
+                ChessTurn.userTurn(chessboard);
             }
         } catch (ChessException e) {
             System.exit(errorcode);
@@ -25,14 +27,14 @@ public final class ChessGame {
     /**
      * Beendet bei leerer Eingabe das Programm.
      */
-    static void exitApplication() {
+    /* default */static void exitApplication() {
         userinput = false;
     }
 
     /**
      * Passt den Fehlercode an.
      */
-    static void changeExitCode(int code) {
+    /* default */static void changeExitCode(final int code) {
         errorcode = code;
     }
 
