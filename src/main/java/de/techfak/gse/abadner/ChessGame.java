@@ -26,7 +26,6 @@ public final class ChessGame {
      * Beendet bei leerer Eingabe das Programm.
      */
     static void exitApplication() {
-        //aendert userinput zu false.
         userinput = false;
     }
 

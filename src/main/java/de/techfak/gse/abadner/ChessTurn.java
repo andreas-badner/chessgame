@@ -11,7 +11,7 @@ class ChessTurn {
 
     static final int FOR_LOOP_ZERO = 0;
 
-    private static boolean whiteturn;
+    private static boolean whiteturn; //true wenn weiss dran ist
 
     private static final String VALID_INPUT_CHARS = "prnbqkPRNBQK";
 
@@ -21,9 +21,9 @@ class ChessTurn {
 
     private static final String VALID_TURN_NUMBERS = "87654321";
 
-    private static final int FOURTH_CHAR = 3;
+    private static final int FOURTH_CHAR_INDEX = 3;
 
-    private static final int FIFTH_CHAR = 4;
+    private static final int FIFTH_CHAR_INDEX = 4;
 
     private static final int LENGTH_OF_TURN_INPUT = 5;
 
@@ -47,21 +47,17 @@ class ChessTurn {
         final Scanner reader = new Scanner(System.in);
         final String turns = reader.nextLine();
         if (turns.length() == 0) { //Leere Eingabe zum beenden der Applikation
-            System.out.println("Programm wird beendet");
+            System.out.println("Programm wird beendet.");
             reader.close();
             ChessGame.exitApplication();
         } else {
-            if (turns.charAt(turns.length() - 1) != ';') {
-                ChessGame.changeExitCode(INVALID_TURN_ERROR);
-                throw new ChessException();
-            }
             final String[] turnsplit = turns.split(";", 0);
             for (String currentturn : turnsplit) {
                 char char0 = currentturn.charAt(0);
                 char char1 = currentturn.charAt(1);
                 char char2 = currentturn.charAt(2);
-                char char3 = currentturn.charAt(FOURTH_CHAR);
-                char char4 = currentturn.charAt(FIFTH_CHAR);
+                char char3 = currentturn.charAt(FOURTH_CHAR_INDEX);
+                char char4 = currentturn.charAt(FIFTH_CHAR_INDEX);
                 boolean validchar0 = VALID_TURN_CHARS.indexOf(char0) >= 0;
                 boolean validchar1 = VALID_TURN_NUMBERS.indexOf(char1) >= 0;
                 boolean validchar2 = char2 == '-';
@@ -82,6 +78,7 @@ class ChessTurn {
                                     chessboard.insertChessPiece(endrow, endcolumm, chesspiece);
                                     whiteturn = !whiteturn;
                                 } else {
+                                    System.out.println(chessboard.createCurrentChessBoard());
                                     ChessGame.changeExitCode(INVALID_NO_MOVE);
                                     throw new ChessException();
                                 }
@@ -91,9 +88,13 @@ class ChessTurn {
                             }
 
                         } else {
+                            System.out.println(chessboard.createCurrentChessBoard());
                             ChessGame.changeExitCode(INVALID_NO_PIECES);
                             throw new ChessException();
                         }
+                    } else {
+                        ChessGame.changeExitCode(INVALID_TURN_ERROR);
+                        throw new ChessException();
                     }
                 } else {
                     ChessGame.changeExitCode(INVALID_TURN_ERROR);
@@ -137,16 +138,20 @@ class ChessTurn {
      */
     private static boolean validString(String input, String starter, ChessBoard chessboard) throws ChessException {
         final String[] zeilen = input.split("/", COLUMN_ROW_COUNT);
+        if (zeilen.length != 8) {
+            ChessGame.changeExitCode(INVALID_INPUT_ERROR);
+            throw new ChessException();
+        }
         char currentchar;
         for (int i = FOR_LOOP_ZERO; i < COLUMN_ROW_COUNT; i++) {
             int rowsum = 0;
             int fillone;
             for (int j = FOR_LOOP_ZERO; j < zeilen[i].length(); j++) {
                 currentchar = zeilen[i].charAt(j);
-                if (VALID_INPUT_CHARS.indexOf(currentchar) >= 0) {
+                if (VALID_INPUT_CHARS.indexOf(currentchar) >= 0 && rowsum < COLUMN_ROW_COUNT) {
                     rowsum++;
                     chessboard.insertChessPiece(i, j, Character.toString(currentchar));
-                } else if (VALID_INPUT_NUMBERS.indexOf(currentchar) >= 0) {
+                } else if (VALID_INPUT_NUMBERS.indexOf(currentchar) >= 0 && rowsum < COLUMN_ROW_COUNT) {
                     rowsum += Character.getNumericValue(currentchar);
                     fillone = Character.getNumericValue(currentchar);
                     for (int k = j; k < fillone; k++) {
@@ -187,5 +192,13 @@ class ChessTurn {
 
     static String getValidInputChars() {
         return VALID_INPUT_CHARS;
+    }
+
+    static String getTurnOrder() {
+        if (whiteturn) {
+            return "w";
+        } else {
+            return "b";
+        }
     }
 }
