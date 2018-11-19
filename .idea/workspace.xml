@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0e8eb280-d7c7-4c2d-8949-be0bd5615b09" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessTurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessTurn.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -44,13 +42,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="19660" />
+          <entry key="java" value="19687" />
           <entry key="xml" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="19660" />
+          <entry key="JAVA" value="19687" />
           <entry key="XML" value="28" />
         </counts>
       </usages-collector>
@@ -86,8 +84,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessTurn.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="89" column="32" lean-forward="true" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+            <state relative-caret-position="405">
+              <caret line="84" column="36" lean-forward="true" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
+              <folding>
+                <element signature="e#8511#8512#0" expanded="true" />
+                <element signature="e#8553#8554#0" expanded="true" />
+                <element signature="e#8595#8596#0" expanded="true" />
+                <element signature="e#8635#8636#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -215,7 +219,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542633299125" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542633814119" />
     <property name="last_opened_file_path" value="$USER_HOME$/gse-ws-2018" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
@@ -286,7 +290,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4994664" visible="true" weight="0.17653759" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4994664" visible="true" weight="0.26309794" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4994664" weight="0.27220955" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -406,8 +410,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessTurn.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="89" column="32" lean-forward="true" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+        <state relative-caret-position="405">
+          <caret line="84" column="36" lean-forward="true" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
+          <folding>
+            <element signature="e#8511#8512#0" expanded="true" />
+            <element signature="e#8553#8554#0" expanded="true" />
+            <element signature="e#8595#8596#0" expanded="true" />
+            <element signature="e#8635#8636#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

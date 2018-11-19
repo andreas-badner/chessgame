@@ -53,17 +53,17 @@ class ChessTurn {
         } else {
             final String[] turnsplit = turns.split(";", 0);
             for (String currentturn : turnsplit) {
-                char char0 = currentturn.charAt(0);
-                char char1 = currentturn.charAt(1);
-                char char2 = currentturn.charAt(2);
-                char char3 = currentturn.charAt(FOURTH_CHAR_INDEX);
-                char char4 = currentturn.charAt(FIFTH_CHAR_INDEX);
-                boolean validchar0 = VALID_TURN_CHARS.indexOf(char0) >= 0;
-                boolean validchar1 = VALID_TURN_NUMBERS.indexOf(char1) >= 0;
-                boolean validchar2 = char2 == '-';
-                boolean validchar3 = VALID_TURN_CHARS.indexOf(char3) >= 0;
-                boolean validchar4 = VALID_TURN_NUMBERS.indexOf(char4) >= 0;
                 if (currentturn.length() == LENGTH_OF_TURN_INPUT) {
+                    char char0 = currentturn.charAt(0);
+                    char char1 = currentturn.charAt(1);
+                    char char2 = currentturn.charAt(2);
+                    char char3 = currentturn.charAt(FOURTH_CHAR_INDEX);
+                    char char4 = currentturn.charAt(FIFTH_CHAR_INDEX);
+                    boolean validchar0 = VALID_TURN_CHARS.indexOf(char0) >= 0;
+                    boolean validchar1 = VALID_TURN_NUMBERS.indexOf(char1) >= 0;
+                    boolean validchar2 = char2 == '-';
+                    boolean validchar3 = VALID_TURN_CHARS.indexOf(char3) >= 0;
+                    boolean validchar4 = VALID_TURN_NUMBERS.indexOf(char4) >= 0;
                     if (validchar0 && validchar1 && validchar2 && validchar3 && validchar4) {
                         int startrow = VALID_TURN_NUMBERS.indexOf(char1);
                         int startcolumn = VALID_TURN_CHARS.indexOf(char0);
@@ -83,6 +83,7 @@ class ChessTurn {
                                     throw new ChessException();
                                 }
                             } else {
+                                System.out.println(chessboard.createCurrentChessBoard());
                                 ChessGame.changeExitCode(INVALID_TURN_ORDER);
                                 throw new ChessException();
                             }
@@ -93,10 +94,12 @@ class ChessTurn {
                             throw new ChessException();
                         }
                     } else {
+                        System.out.println(chessboard.createCurrentChessBoard());
                         ChessGame.changeExitCode(INVALID_TURN_ERROR);
                         throw new ChessException();
                     }
                 } else {
+                    System.out.println(chessboard.createCurrentChessBoard());
                     ChessGame.changeExitCode(INVALID_TURN_ERROR);
                     throw new ChessException();
                 }
