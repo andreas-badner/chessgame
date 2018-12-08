@@ -67,7 +67,7 @@
                     <repositoryLayout>flat</repositoryLayout>
                     <programs>
                         <program>
-                            <mainClass>model.ChessGame</mainClass>
+                            <mainClass>ChessStart</mainClass>
                             <id>chessgame</id>
                         </program>
                     </programs>
