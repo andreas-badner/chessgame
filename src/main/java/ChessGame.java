@@ -24,7 +24,7 @@ public class ChessGame extends Application {
         if (args.length == 1 && args[0].equals("--gui")) {
             launch();
         } else {
-            ChessTurn chessturn = new ChessTurn();
+            model.ChessTurn chessturn = new ChessTurn();
             chessturn.run(args);
         }
         System.exit(0);
@@ -32,10 +32,10 @@ public class ChessGame extends Application {
 
     @Override
     public void start(final Stage stage) throws IOException {
-        ChessTurn chessturn = new ChessTurn();
+        model.ChessTurn chessturn = new ChessTurn();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("ChessFXML.fxml"));
         Pane root = fxmlLoader.load();
-        ChessController chessController = fxmlLoader.getController();
+        controller.ChessController chessController = fxmlLoader.getController();
         chessturn.addObserver(chessController);
         chessController.setModel(chessturn);
         chessController.setChessTurn(chessturn);
