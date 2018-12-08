@@ -6,9 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
-import controller.ChessController;
-import model.ChessTurn;
-
 /**
  * Klasse zum Starten der Applikation.
  * Startet mit GUI oder Konsole.
@@ -24,7 +21,7 @@ public class ChessGame extends Application {
         if (args.length == 1 && args[0].equals("--gui")) {
             launch();
         } else {
-            model.ChessTurn chessturn = new ChessTurn();
+            model.ChessTurn chessturn = new model.ChessTurn();
             chessturn.run(args);
         }
         System.exit(0);
@@ -32,7 +29,7 @@ public class ChessGame extends Application {
 
     @Override
     public void start(final Stage stage) throws IOException {
-        model.ChessTurn chessturn = new ChessTurn();
+        model.ChessTurn chessturn = new model.ChessTurn();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("ChessFXML.fxml"));
         Pane root = fxmlLoader.load();
         controller.ChessController chessController = fxmlLoader.getController();

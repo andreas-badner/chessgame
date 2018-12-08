@@ -7,13 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
-import model.ChessTurn;
 
 public class ChessController implements Observer {
     @FXML
     private Text instruction;
 
-    private ChessTurn chessTurn;
+    private model.ChessTurn chessTurn;
 
     public ChessController() {
     }
@@ -22,7 +21,7 @@ public class ChessController implements Observer {
     public void initialize() {
     }
 
-    public void setModel(final ChessTurn chessTurn) {
+    public void setModel(final model.ChessTurn chessTurn) {
         this.chessTurn = chessTurn;
     }
 
@@ -37,7 +36,7 @@ public class ChessController implements Observer {
         this.chessTurn.runstandard();
     }
 
-    public void setChessTurn(ChessTurn chessturn) {
+    public void setChessTurn(model.ChessTurn chessturn) {
         this.chessTurn = chessturn;
     }
 }
