@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChessController" />
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChessController">
+    <VBox alignment="CENTER" layoutX="118.0" layoutY="150.0" prefHeight="100.0" prefWidth="388.0">
+      <Text fx:id="instruction" text="Press the button to start a chess match in the standard configuration!" />
+      <Button onAction="#newgame" text="New Game - Standard" />
+    </VBox>
+</AnchorPane>

@@ -36,13 +36,12 @@ public class ChessGame extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("ChessFXML.fxml"));
         Pane root = fxmlLoader.load();
         ChessController chessController = fxmlLoader.getController();
-        //chessgame.addObserver(chessController);
-        //chessController.setModel(chessgame);
+        chessturn.addObserver(chessController);
+        chessController.setModel(chessturn);
+        chessController.setChessTurn(chessturn);
         Scene scene = new Scene(root);
         stage.setTitle("ChessGame");
         stage.setScene(scene);
         stage.show();
-        String[] args = {};
-        chessturn.run(args);
     }
 }

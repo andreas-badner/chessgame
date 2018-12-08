@@ -65,7 +65,7 @@ class ChessBoard {
         for (int i = ChessTurn.FOR_LOOP_ZERO; i < ChessTurn.COLUMN_ROW_COUNT; i++) {
             int sum = 0;
             for (int j = ChessTurn.FOR_LOOP_ZERO; j < ChessTurn.COLUMN_ROW_COUNT; j++) {
-                if (ChessPiece.getBez(getChessPiece(i,j)).equals("1")) {
+                if (ChessPiece.getBez(getChessPiece(i, j)).equals("1")) {
                     sum++;
                     if (sum == ChessTurn.COLUMN_ROW_COUNT) {
                         stringbuilder.append(sum);

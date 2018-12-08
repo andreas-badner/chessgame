@@ -1,16 +1,16 @@
 package model;
 
+import java.util.Observable;
 import java.util.Scanner;
 
 /**
  * ChessGame Hauptklasse - Zur Ausgabe des Spielfelds unter bedingten Eingaben.
  */
-public final class ChessTurn {
+public final class ChessTurn extends Observable {
+
     static final int COLUMN_ROW_COUNT = 8;
 
     static final int FOR_LOOP_ZERO = 0;
-
-    private static boolean userinput = true;
 
     private static int errorcode = 0;
 
@@ -48,6 +48,8 @@ public final class ChessTurn {
 
     private static ChessBoard chessboard;
 
+    private boolean userinput = true;
+
     /**
      * Konstruktor der Klasse - ruft alle benoetigten Methoden auf.
      */
@@ -56,7 +58,8 @@ public final class ChessTurn {
     }
 
     /**
-     * Ablauf der Zuege und Ueberpruefung des Startinputs
+     * Ablauf der Zuege und Ueberpruefung des Startinputs.
+     *
      * @param input Startinput fuer Startaufstellung
      */
     public void run(final String[] input) {
@@ -70,11 +73,28 @@ public final class ChessTurn {
         }
     }
 
+    public void runstandard() {
+        try {
+            insertstandard();
+            while (userinput) {
+                userTurn(chessboard);
+            }
+        } catch (ChessException e) {
+            System.exit(errorcode);
+        }
+    }
+
     /**
      * Beendet bei leerer Eingabe das Programm.
      */
-    private static void exitApplication() {
+    private void exitApplication() {
         userinput = false;
+        setChanged();
+        notifyObservers();
+    }
+
+    public boolean getuserinput() {
+        return this.userinput;
     }
 
     /**
@@ -89,7 +109,7 @@ public final class ChessTurn {
      *
      * @param chessboard bekommt das erzeugte Schachbrett
      */
-    private static void userTurn(final ChessBoard chessboard) throws ChessException {
+    private void userTurn(final ChessBoard chessboard) throws ChessException {
         final Scanner reader = new Scanner(System.in);
         final String turns = reader.nextLine();
         if (turns.length() == 0) { //Leere Eingabe zum beenden der Applikation
@@ -112,13 +132,16 @@ public final class ChessTurn {
                         final int endrow = VALID_TURN_NUMBERS.indexOf(char4);
                         final int endcolumm = VALID_TURN_CHARS.indexOf(char3);
                         if (chessboard.hasChessPiece(startrow, startcolumn)) {
-                            final String chesspiece = ChessPiece.getBez(chessboard.getChessPiece(startrow, startcolumn));
+                            final String chesspiece =
+                                ChessPiece.getBez(chessboard.getChessPiece(startrow, startcolumn));
                             final boolean whitepiece = chesspiece.equals(chesspiece.toUpperCase());
                             if (whiteturn && whitepiece || !whiteturn && !whitepiece) {
                                 if (startrow != endrow || startcolumn != endcolumm) {
                                     chessboard.insertChessPiece(startrow, startcolumn, NO_PIECE_ON_FIELD);
                                     chessboard.insertChessPiece(endrow, endcolumm, chesspiece);
                                     whiteturn = !whiteturn;
+                                    setChanged();
+                                    notifyObservers();
                                 } else {
                                     System.out.println(chessboard.createCurrentChessBoard());
                                     changeExitCode(INVALID_NO_MOVE); //Start und Ziel sind identisch.
@@ -129,7 +152,6 @@ public final class ChessTurn {
                                 changeExitCode(INVALID_TURN_ORDER);
                                 throw new ChessException();
                             }
-
                         } else {
                             System.out.println(chessboard.createCurrentChessBoard()); //keine Figur auf Startfeld.
                             changeExitCode(INVALID_NO_PIECES);
@@ -153,19 +175,16 @@ public final class ChessTurn {
     /**
      * @param input Startparameter wird geprueft fuer die Ausgabe des Spielfelds - muss sFEN sein.
      */
-    private static void checkStartInput(final String[] input, final ChessBoard chessboard) throws ChessException {
+    private void checkStartInput(final String[] input, final ChessBoard chessboard) throws ChessException {
         if (input.length == 0) { //Kein Startparameter => Grundstellung
-            final String grundstellung = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w";
-            final String stellung = grundstellung.substring(0, grundstellung.length() - 2);
-            final String startergrund = grundstellung.substring(grundstellung.length() - 1);
-            if (validString(stellung, startergrund, chessboard)) {
-                System.out.println(grundstellung);
-            }
+            insertstandard();
         } else if (input.length == 1) { //Startparameter => Wird ueberprueft und ggf. ubernommen
             final String customstellung = input[0].substring(0, input[0].length() - 2);
             final String startercustom = input[0].substring(input[0].length() - 1);
             if (validString(customstellung, startercustom, chessboard)) {
                 System.out.println(input[0]);
+                setChanged();
+                notifyObservers();
             } else {
                 changeExitCode(INVALID_INPUT_ERROR); //String ist nicht sFEN - ungueltig.
                 throw new ChessException();
@@ -173,6 +192,17 @@ public final class ChessTurn {
         } else {
             changeExitCode(INVALID_INPUT_ERROR); //Startparameter ist laenger als 1 und somit ungueltig.
             throw new ChessException();
+        }
+    }
+
+    private void insertstandard() throws ChessException {
+        final String grundstellung = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w";
+        final String stellung = grundstellung.substring(0, grundstellung.length() - 2);
+        final String startergrund = grundstellung.substring(grundstellung.length() - 1);
+        if (validString(stellung, startergrund, chessboard)) {
+            System.out.println(grundstellung);
+            setChanged();
+            notifyObservers();
         }
     }
 
