@@ -1,4 +1,4 @@
-package de.techfak.gse.abadner;
+package model;
 
 /**
  * Klasse zum Abfangen von Exceptions.

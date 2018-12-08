@@ -1,4 +1,4 @@
-package de.techfak.gse.abadner;
+package model;
 
 /**
  * Klasse, die Figurenobjekte erzeugt und deren Daten speichert.

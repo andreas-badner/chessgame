@@ -1,15 +1,18 @@
-package de.techfak.gse.abadner;
+package model;
 
 import java.util.Scanner;
 
 /**
- * Klasse fuer die Verarbeitung und Ueberpruefung der Eingaben.
+ * ChessGame Hauptklasse - Zur Ausgabe des Spielfelds unter bedingten Eingaben.
  */
-class ChessTurn {
+public final class ChessGame {
+    static final int COLUMN_ROW_COUNT = 8;
 
-    /* default */static final int COLUMN_ROW_COUNT = 8;
+    static final int FOR_LOOP_ZERO = 0;
 
-    /* default */static final int FOR_LOOP_ZERO = 0;
+    private static boolean userinput = true;
+
+    private static int errorcode = 0;
 
     private static boolean whiteturn; //true wenn weiss dran ist
 
@@ -42,12 +45,51 @@ class ChessTurn {
     private static final String WHITE_TURN_STRING = "w";
 
     private static final String BLACK_TURN_STRING = "b";
+
+    private static ChessBoard chessboard;
+
+    /**
+     * Konstruktor der Klasse - ruft alle benoetigten Methoden auf.
+     */
+    public ChessGame() {
+        chessboard = new ChessBoard();
+    }
+
+    /**
+     * Ablauf der Zuege und Ueberpruefung des Startinputs
+     * @param input Startinput fuer Startaufstellung
+     */
+    public void run(final String[] input) {
+        try {
+            checkStartInput(input, chessboard);
+            while (userinput) {
+                userTurn(chessboard);
+            }
+        } catch (ChessException e) {
+            System.exit(errorcode);
+        }
+    }
+
+    /**
+     * Beendet bei leerer Eingabe das Programm.
+     */
+    private static void exitApplication() {
+        userinput = false;
+    }
+
+    /**
+     * Passt den Fehlercode an.
+     */
+    private static void changeExitCode(final int code) {
+        errorcode = code;
+    }
+
     /**
      * Methode fuehrt Zug durch, wenn Zug valide ist.
      *
      * @param chessboard bekommt das erzeugte Schachbrett
      */
-    /* default */static void userTurn(final ChessBoard chessboard) throws ChessException {
+    private static void userTurn(final ChessBoard chessboard) throws ChessException {
         final Scanner reader = new Scanner(System.in);
         final String turns = reader.nextLine();
         if (turns.length() == 0) { //Leere Eingabe zum beenden der Applikation
@@ -79,28 +121,28 @@ class ChessTurn {
                                     whiteturn = !whiteturn;
                                 } else {
                                     System.out.println(chessboard.createCurrentChessBoard());
-                                    ChessGame.changeExitCode(INVALID_NO_MOVE); //Start und Ziel sind identisch.
+                                    changeExitCode(INVALID_NO_MOVE); //Start und Ziel sind identisch.
                                     throw new ChessException();
                                 }
                             } else {
                                 System.out.println(chessboard.createCurrentChessBoard()); //ungueltige Spielreihenfolge.
-                                ChessGame.changeExitCode(INVALID_TURN_ORDER);
+                                changeExitCode(INVALID_TURN_ORDER);
                                 throw new ChessException();
                             }
 
                         } else {
                             System.out.println(chessboard.createCurrentChessBoard()); //keine Figur auf Startfeld.
-                            ChessGame.changeExitCode(INVALID_NO_PIECES);
+                            changeExitCode(INVALID_NO_PIECES);
                             throw new ChessException();
                         }
                     } else {
                         System.out.println(chessboard.createCurrentChessBoard()); //Zeichen im Zug ungueltig.
-                        ChessGame.changeExitCode(INVALID_TURN_ERROR);
+                        changeExitCode(INVALID_TURN_ERROR);
                         throw new ChessException();
                     }
                 } else {
                     System.out.println(chessboard.createCurrentChessBoard()); //Zug ist nicht 5 Zeichen.
-                    ChessGame.changeExitCode(INVALID_TURN_ERROR);
+                    changeExitCode(INVALID_TURN_ERROR);
                     throw new ChessException();
                 }
             }
@@ -111,7 +153,7 @@ class ChessTurn {
     /**
      * @param input Startparameter wird geprueft fuer die Ausgabe des Spielfelds - muss sFEN sein.
      */
-    /* default */static void checkStartInput(final String[] input, final ChessBoard chessboard) throws ChessException {
+    private static void checkStartInput(final String[] input, final ChessBoard chessboard) throws ChessException {
         if (input.length == 0) { //Kein Startparameter => Grundstellung
             final String grundstellung = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w";
             final String stellung = grundstellung.substring(0, grundstellung.length() - 2);
@@ -125,11 +167,11 @@ class ChessTurn {
             if (validString(customstellung, startercustom, chessboard)) {
                 System.out.println(input[0]);
             } else {
-                ChessGame.changeExitCode(INVALID_INPUT_ERROR); //String ist nicht sFEN - ungueltig.
+                changeExitCode(INVALID_INPUT_ERROR); //String ist nicht sFEN - ungueltig.
                 throw new ChessException();
             }
         } else {
-            ChessGame.changeExitCode(INVALID_INPUT_ERROR); //Startparameter ist laenger als 1 und somit ungueltig.
+            changeExitCode(INVALID_INPUT_ERROR); //Startparameter ist laenger als 1 und somit ungueltig.
             throw new ChessException();
         }
     }
@@ -142,7 +184,7 @@ class ChessTurn {
                                        final ChessBoard chessboard) throws ChessException {
         final String[] zeilen = input.split("/", COLUMN_ROW_COUNT);
         if (zeilen.length != COLUMN_ROW_COUNT) {
-            ChessGame.changeExitCode(INVALID_INPUT_ERROR); //acht Reihen sind nicht belegt.
+            changeExitCode(INVALID_INPUT_ERROR); //acht Reihen sind nicht belegt.
             throw new ChessException();
         }
         char currentchar;
@@ -161,12 +203,12 @@ class ChessTurn {
                         chessboard.insertChessPiece(i, k, NO_PIECE_ON_FIELD);
                     }
                 } else {
-                    ChessGame.changeExitCode(INVALID_INPUT_ERROR); //char ist nicht fuer sFEN gueltig.
+                    changeExitCode(INVALID_INPUT_ERROR); //char ist nicht fuer sFEN gueltig.
                     throw new ChessException();
                 }
             }
             if (rowsum != COLUMN_ROW_COUNT) {
-                ChessGame.changeExitCode(INVALID_INPUT_ERROR); //weniger/mehr als acht Felder belegt.
+                changeExitCode(INVALID_INPUT_ERROR); //weniger/mehr als acht Felder belegt.
                 throw new ChessException();
             }
         }
@@ -179,30 +221,28 @@ class ChessTurn {
                     whiteturn = false;
                     return true;
                 default:
-                    ChessGame.changeExitCode(INVALID_INPUT_ERROR); //Startspieler-String ist weder b noch w
+                    changeExitCode(INVALID_INPUT_ERROR); //Startspieler-String ist weder b noch w
                     throw new ChessException();
             }
         } else {
-            ChessGame.changeExitCode(INVALID_INPUT_ERROR); //Startspieler-String ist falsch
+            changeExitCode(INVALID_INPUT_ERROR); //Startspieler-String ist falsch
             throw new ChessException();
         }
     }
 
     /**
-     * @return gibt String aus gueltigen Buchstaben fuer Zug zurueck.
-     */
-    /* default */static String getValidInputChars() {
-        return VALID_INPUT_CHARS;
-    }
-
-    /**
      * @return gibt zurueck, wer gerade dran ist.
      */
-    /* default */static String getTurnOrder() {
+    /* default */
+    static String getTurnOrder() {
         if (whiteturn) {
             return WHITE_TURN_STRING;
         } else {
             return BLACK_TURN_STRING;
         }
+    }
+
+    static String getValidInputChars() {
+        return VALID_INPUT_CHARS;
     }
 }

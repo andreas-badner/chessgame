@@ -1,4 +1,4 @@
-package de.techfak.gse.abadner;
+package model;
 
 
 /**
@@ -19,7 +19,7 @@ class ChessBoard {
      * Konstruktor der Klasse.
      */
     /* default */ChessBoard() {
-        chessboardarr = new ChessPiece[ChessTurn.COLUMN_ROW_COUNT][ChessTurn.COLUMN_ROW_COUNT];
+        chessboardarr = new ChessPiece[ChessGame.COLUMN_ROW_COUNT][ChessGame.COLUMN_ROW_COUNT];
     }
 
     /**
@@ -45,7 +45,7 @@ class ChessBoard {
      * @return true wenn eine Figur auf dem Feld ist
      */
     /* default */boolean hasChessPiece(final int row, final int column) {
-        return (ChessTurn.getValidInputChars().contains(ChessPiece.getBez(getChessPiece(row, column))));
+        return (ChessGame.getValidInputChars().contains(ChessPiece.getBez(getChessPiece(row, column))));
     }
 
     /**
@@ -62,12 +62,12 @@ class ChessBoard {
      */
     /* default */String createCurrentChessBoard() {
         final StringBuilder stringbuilder = new StringBuilder();
-        for (int i = ChessTurn.FOR_LOOP_ZERO; i < ChessTurn.COLUMN_ROW_COUNT; i++) {
+        for (int i = ChessGame.FOR_LOOP_ZERO; i < ChessGame.COLUMN_ROW_COUNT; i++) {
             int sum = 0;
-            for (int j = ChessTurn.FOR_LOOP_ZERO; j < ChessTurn.COLUMN_ROW_COUNT; j++) {
+            for (int j = ChessGame.FOR_LOOP_ZERO; j < ChessGame.COLUMN_ROW_COUNT; j++) {
                 if (ChessPiece.getBez(getChessPiece(i,j)).equals("1")) {
                     sum++;
-                    if (sum == ChessTurn.COLUMN_ROW_COUNT) {
+                    if (sum == ChessGame.COLUMN_ROW_COUNT) {
                         stringbuilder.append(sum);
                     } else if (j == LAST_ARRAY_BOARD && sum > 0) {
                         stringbuilder.append(sum);
@@ -84,7 +84,7 @@ class ChessBoard {
                 stringbuilder.append('/');
             }
         }
-        stringbuilder.append(" " + ChessTurn.getTurnOrder());
+        stringbuilder.append(" " + ChessGame.getTurnOrder());
         return stringbuilder.toString();
     }
 
