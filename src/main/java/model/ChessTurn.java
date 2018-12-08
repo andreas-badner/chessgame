@@ -73,6 +73,9 @@ public final class ChessTurn extends Observable {
         }
     }
 
+    /**
+     * Ablauf der Zuege mit Standardaufstellung.
+     */
     public void runstandard() {
         try {
             insertstandard();
@@ -150,8 +153,8 @@ public final class ChessTurn extends Observable {
                                         throw new ChessException();
                                     }
                                 } else {
-                                    System.out.println(chessboard.createCurrentChessBoard()); //ungueltige Spielreihenfolge.
-                                    changeExitCode(INVALID_TURN_ORDER);
+                                    System.out.println(chessboard.createCurrentChessBoard());
+                                    changeExitCode(INVALID_TURN_ORDER); //ungueltigSpielreihenfolge.
                                     throw new ChessException();
                                 }
                             } else {

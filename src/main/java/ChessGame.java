@@ -18,8 +18,10 @@ public class ChessGame extends Application {
      * @param args prueft Startparameter auf "--gui", sonst Kommandozeile
      */
     public static void main(String[] args) {
-        if (args.length == 1 && args[0].equals("--gui")) {
-            launch();
+        if (args.length == 1) {
+            if (args[0].equals("--gui")) {
+                launch();
+            }
         } else {
             model.ChessTurn chessturn = new model.ChessTurn();
             chessturn.run(args);

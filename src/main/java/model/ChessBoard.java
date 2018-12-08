@@ -87,5 +87,4 @@ class ChessBoard {
         stringbuilder.append(" " + ChessTurn.getTurnOrder());
         return stringbuilder.toString();
     }
-
 }
