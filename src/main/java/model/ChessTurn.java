@@ -94,7 +94,7 @@ public final class ChessTurn extends Observable {
     }
 
     public boolean getuserinput() {
-        return this.userinput;
+        return userinput;
     }
 
     /**
@@ -110,7 +110,8 @@ public final class ChessTurn extends Observable {
      * @param chessboard bekommt das erzeugte Schachbrett
      */
     private void userTurn(final ChessBoard chessboard) throws ChessException {
-        try (Scanner reader = new Scanner(System.in)) {
+        Scanner reader = new Scanner(System.in);
+        if (reader.hasNextLine()) {
             final String turns = reader.nextLine();
             if (turns.length() == 0) { //Leere Eingabe zum beenden der Applikation
                 System.out.println("Programm wird beendet.");
@@ -172,6 +173,7 @@ public final class ChessTurn extends Observable {
                 System.out.println(chessboard.createCurrentChessBoard());
             }
         }
+
     }
 
 
