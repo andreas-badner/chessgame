@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * ChessGame Hauptklasse - Zur Ausgabe des Spielfelds unter bedingten Eingaben.
  */
-public final class ChessGame {
+public final class ChessTurn {
     static final int COLUMN_ROW_COUNT = 8;
 
     static final int FOR_LOOP_ZERO = 0;
@@ -51,7 +51,7 @@ public final class ChessGame {
     /**
      * Konstruktor der Klasse - ruft alle benoetigten Methoden auf.
      */
-    public ChessGame() {
+    public ChessTurn() {
         chessboard = new ChessBoard();
     }
 
@@ -95,7 +95,7 @@ public final class ChessGame {
         if (turns.length() == 0) { //Leere Eingabe zum beenden der Applikation
             System.out.println("Programm wird beendet.");
             reader.close();
-            ChessGame.exitApplication();
+            exitApplication();
         } else {
             final String[] turnsplit = turns.split(";", 0);
             for (final String currentturn : turnsplit) {

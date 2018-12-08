@@ -67,8 +67,8 @@
                     <repositoryLayout>flat</repositoryLayout>
                     <programs>
                         <program>
-                            <mainClass>ChessStart</mainClass>
-                            <id>chessstart</id>
+                            <mainClass>ChessGame</mainClass>
+                            <id>chessgame</id>
                         </program>
                     </programs>
                 </configuration>

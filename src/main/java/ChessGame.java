@@ -7,13 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
 import controller.ChessController;
-import model.ChessGame;
+import model.ChessTurn;
 
 /**
  * Klasse zum Starten der Applikation.
  * Startet mit GUI oder Konsole.
  */
-public class ChessStart extends Application {
+public class ChessGame extends Application {
 
     /**
      * main-Methode.
@@ -24,15 +24,15 @@ public class ChessStart extends Application {
         if (args.length == 1 && args[0].equals("--gui")) {
             launch();
         } else {
-            ChessGame chessgame = new ChessGame();
-            chessgame.run(args);
+            ChessTurn chessturn = new ChessTurn();
+            chessturn.run(args);
         }
         System.exit(0);
     }
 
     @Override
     public void start(final Stage stage) throws IOException {
-        ChessGame chessgame = new ChessGame();
+        ChessTurn chessturn = new ChessTurn();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("ChessFXML.fxml"));
         Pane root = fxmlLoader.load();
         ChessController chessController = fxmlLoader.getController();
@@ -43,6 +43,6 @@ public class ChessStart extends Application {
         stage.setScene(scene);
         stage.show();
         String[] args = {};
-        chessgame.run(args);
+        chessturn.run(args);
     }
 }
