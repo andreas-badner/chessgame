@@ -68,7 +68,7 @@
                     <programs>
                         <program>
                             <mainClass>ChessStart</mainClass>
-                            <id>chessgame</id>
+                            <id>chessstart</id>
                         </program>
                     </programs>
                 </configuration>
