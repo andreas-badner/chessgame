@@ -21,7 +21,7 @@ public class ChessStart extends Application {
      * @param args prueft Startparameter auf "--gui", sonst Kommandozeile
      */
     public static void main(String[] args) {
-        if (args.length == 1 && args[0].equals("--git")) {
+        if (args.length == 1 && args[0].equals("--gui")) {
             launch();
         } else {
             ChessGame chessgame = new ChessGame();
