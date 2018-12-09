@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import view.CreateChessBoard?>
+
+<AnchorPane prefHeight="830" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChessBoardController">
+  <MenuBar prefHeight="30.0" prefWidth="622.0">
+
+    <Menu mnemonicParsing="false" text="Save | Load">
+
+      <MenuItem mnemonicParsing="false" text="Save" />
+      <MenuItem mnemonicParsing="false" text="Load" />
+
+    </Menu>
+
+  </MenuBar>
+  <AnchorPane layoutX="1.0" layoutY="31.0" prefHeight="800.0" prefWidth="800.0">
+    <CreateChessBoard fx:id="createChessBoard" alignment="CENTER" />
+  </AnchorPane>
+   <TextField fx:id = "zugrecht" layoutX="623.0" layoutY="2.0" disable="true"/>
+</AnchorPane>

@@ -107,6 +107,10 @@ public final class ChessTurn extends Observable {
         errorcode = code;
     }
 
+    public boolean getwhiteturn() {
+        return whiteturn;
+    }
+
     /**
      * Methode fuehrt Zug durch, wenn Zug valide ist.
      *

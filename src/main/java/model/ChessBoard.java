@@ -18,7 +18,7 @@ class ChessBoard {
     /**
      * Konstruktor der Klasse.
      */
-    /* default */ChessBoard() {
+    ChessBoard() {
         chessboardarr = new ChessPiece[ChessTurn.COLUMN_ROW_COUNT][ChessTurn.COLUMN_ROW_COUNT];
     }
 

@@ -21,6 +21,9 @@ public class ChessGame extends Application {
         if (args.length == 1) {
             if (args[0].equals("--gui")) {
                 launch();
+            } else {
+                model.ChessTurn chessturn = new model.ChessTurn();
+                chessturn.run(args);
             }
         } else {
             model.ChessTurn chessturn = new model.ChessTurn();
@@ -35,12 +38,12 @@ public class ChessGame extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("ChessFXML.fxml"));
         Pane root = fxmlLoader.load();
         controller.ChessController chessController = fxmlLoader.getController();
-        chessturn.addObserver(chessController);
         chessController.setModel(chessturn);
-        chessController.setChessTurn(chessturn);
-        Scene scene = new Scene(root);
+        Scene menuscene = new Scene(root);
         stage.setTitle("ChessGame");
-        stage.setScene(scene);
+        stage.setScene(menuscene);
+        chessController.setStage(stage);
+        stage.setResizable(false);
         stage.show();
     }
 }
