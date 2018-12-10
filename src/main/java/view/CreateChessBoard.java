@@ -51,10 +51,6 @@ public class CreateChessBoard {
 
     private GridPane gpane;
 
-    VBox vbox = new VBox(10);
-
-    HBox hbox = new HBox(10);
-
     public CreateChessBoard() {
     }
 
@@ -176,11 +172,6 @@ public class CreateChessBoard {
         }
     }
 
-    public void removeall() {
-        vbox.getChildren().clear();
-        hbox.getChildren().clear();
-    }
-
     /**
      * Setting up the ChessBoard.
      *
@@ -212,8 +203,9 @@ public class CreateChessBoard {
                 chessController.mouseclick(row, column);
             }
         });
+        HBox hbox = new HBox(10);
+        VBox vbox = new VBox(10);
         starter.setText(start);
-        starter.setEditable(false);
         Button buttonsave = new Button("Save as sFEN file");
         Button buttonload = new Button("Load a sFEN file");
         hbox.getChildren().addAll(starter, buttonsave, buttonload);

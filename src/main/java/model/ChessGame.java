@@ -42,8 +42,10 @@ public final class ChessGame extends Observable {
         }
     }
 
-    public ChessBoard getChessBoard() {
-        return this.chessBoard;
+    public void guiturn(int startrow, int startcolumn, int endrow, int endcolumn, ChessBoard chessBoard) {
+        chessTurn.guiturn(startrow, startcolumn, endrow, endcolumn, chessBoard);
+        setChanged();
+        notifyObservers();
     }
 
     /**

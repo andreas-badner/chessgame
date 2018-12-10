@@ -65,7 +65,7 @@ public class ChessController implements Observer {
     @Override
     public void update(final Observable observable, final Object o) {
         if (observable.equals(this.chessGame)) {
-            updatevisualize();
+            visualize();
         }
     }
 
@@ -92,12 +92,6 @@ public class ChessController implements Observer {
         insertChessPiece();
     }
 
-    private void updatevisualize() {
-        createChessBoard.removeall();
-        createChessBoard.visualize(this.stage, this, zugrecht);
-        insertChessPiece();
-    }
-
     public void mouseclick(int row, int column) {
         String chessPiece = ChessPiece.getBez(chessGame.chessBoard.getChessPiece(row, column));
         if (counter == 0) {
@@ -116,7 +110,7 @@ public class ChessController implements Observer {
                 columnlist.clear();
                 counter = 0;
             } else {
-                chessGame.chessTurn.guiturn(rowlist.get(0), columnlist.get(0), rowlist.get(1), columnlist.get(1), chessGame.chessBoard);
+                chessGame.guiturn(rowlist.get(0), columnlist.get(0), rowlist.get(1), columnlist.get(1), chessGame.chessBoard);
                 rowlist.clear();
                 columnlist.clear();
                 counter = 0;

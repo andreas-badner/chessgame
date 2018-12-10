@@ -46,9 +46,10 @@ public class ChessTurn extends Observable {
     ChessTurn() {
     }
 
-    public void guiturn(int startrow, int startcolumn, int endrow, int endcolumn, ChessBoard chessBoard) {
+    void guiturn(int startrow, int startcolumn, int endrow, int endcolumn, ChessBoard chessBoard) {
+        String piece = ChessPiece.getBez(chessBoard.getChessPiece(startrow, startcolumn));
         chessBoard.insertChessPiece(startrow, startcolumn, NO_PIECE_ON_FIELD);
-        chessBoard.insertChessPiece(endrow, endcolumn, ChessPiece.getBez(chessBoard.getChessPiece(startrow, startcolumn)));
+        chessBoard.insertChessPiece(endrow, endcolumn, piece);
         whiteturn = !whiteturn;
         setChanged();
         notifyObservers();
