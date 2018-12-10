@@ -1,12 +1,22 @@
 package view;
 
+import javafx.event.EventHandler;
+import javafx.geometry.HPos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import controller.ChessController;
 
 /**
  * Klasse, die alles bezueglich des Schachbretts visualisiert.
@@ -37,7 +47,13 @@ public class CreateChessBoard {
 
     private static final String WHITEPAWN = "pawn_white.png";
 
+    private TextField starter;
+
     private GridPane gpane;
+
+    VBox vbox = new VBox(10);
+
+    HBox hbox = new HBox(10);
 
     public CreateChessBoard() {
     }
@@ -47,6 +63,7 @@ public class CreateChessBoard {
      */
     public void createBoard() {
         this.gpane = new GridPane();
+        this.starter = new TextField();
     }
 
     /**
@@ -64,6 +81,7 @@ public class CreateChessBoard {
                 imagebp1.setFitHeight(SIZE);
                 imagebp1.setFitWidth(SIZE);
                 gpane.add(imagebp1, column, row);
+                GridPane.setHalignment(imagebp1, HPos.CENTER);
                 break;
             case "P":
                 Image wpawn1 = new Image(WHITEPAWN);
@@ -71,6 +89,7 @@ public class CreateChessBoard {
                 imagewp1.setFitHeight(SIZE);
                 imagewp1.setFitWidth(SIZE);
                 gpane.add(imagewp1, column, row);
+                GridPane.setHalignment(imagewp1, HPos.CENTER);
                 break;
             case "r":
                 Image blackimage = new Image(BLACKROOK);
@@ -78,6 +97,7 @@ public class CreateChessBoard {
                 imagevb.setFitHeight(SIZE);
                 imagevb.setFitWidth(SIZE);
                 gpane.add(imagevb, column, row);
+                GridPane.setHalignment(imagevb, HPos.CENTER);
                 break;
             case "R":
                 Image whiteimage = new Image(WHITEROOK);
@@ -85,6 +105,7 @@ public class CreateChessBoard {
                 imagevw.setFitWidth(SIZE);
                 imagevw.setFitHeight(SIZE);
                 gpane.add(imagevw, column, row);
+                GridPane.setHalignment(imagevw, HPos.CENTER);
                 break;
             case "n":
                 blackimage = new Image(BLACKKNIGHT);
@@ -92,6 +113,7 @@ public class CreateChessBoard {
                 imagevb.setFitHeight(SIZE);
                 imagevb.setFitWidth(SIZE);
                 gpane.add(imagevb, column, row);
+                GridPane.setHalignment(imagevb, HPos.CENTER);
                 break;
             case "N":
                 whiteimage = new Image(WHITEKNIGHT);
@@ -99,6 +121,7 @@ public class CreateChessBoard {
                 imagevw.setFitWidth(SIZE);
                 imagevw.setFitHeight(SIZE);
                 gpane.add(imagevw, column, row);
+                GridPane.setHalignment(imagevw, HPos.CENTER);
                 break;
             case "b":
                 blackimage = new Image(BLACKBISHOP);
@@ -106,6 +129,7 @@ public class CreateChessBoard {
                 imagevb.setFitHeight(SIZE);
                 imagevb.setFitWidth(SIZE);
                 gpane.add(imagevb, column, row);
+                GridPane.setHalignment(imagevb, HPos.CENTER);
                 break;
             case "B":
                 whiteimage = new Image(WHITEBISHOP);
@@ -113,6 +137,7 @@ public class CreateChessBoard {
                 imagevw.setFitWidth(SIZE);
                 imagevw.setFitHeight(SIZE);
                 gpane.add(imagevw, column, row);
+                GridPane.setHalignment(imagevw, HPos.CENTER);
                 break;
             case "q":
                 blackimage = new Image("queen_black.png");
@@ -120,6 +145,7 @@ public class CreateChessBoard {
                 imagevb.setFitHeight(SIZE);
                 imagevb.setFitWidth(SIZE);
                 gpane.add(imagevb, column, row);
+                GridPane.setHalignment(imagevb, HPos.CENTER);
                 break;
             case "Q":
                 whiteimage = new Image("queen_white.png");
@@ -127,6 +153,7 @@ public class CreateChessBoard {
                 imagevw.setFitWidth(SIZE);
                 imagevw.setFitHeight(SIZE);
                 gpane.add(imagevw, column, row);
+                GridPane.setHalignment(imagevw, HPos.CENTER);
                 break;
             case "k":
                 blackimage = new Image("king_black.png");
@@ -134,6 +161,7 @@ public class CreateChessBoard {
                 imagevb.setFitHeight(SIZE);
                 imagevb.setFitWidth(SIZE);
                 gpane.add(imagevb, column, row);
+                GridPane.setHalignment(imagevb, HPos.CENTER);
                 break;
             case "K":
                 whiteimage = new Image("king_white.png");
@@ -141,13 +169,24 @@ public class CreateChessBoard {
                 imagevw.setFitWidth(SIZE);
                 imagevw.setFitHeight(SIZE);
                 gpane.add(imagevw, column, row);
+                GridPane.setHalignment(imagevw, HPos.CENTER);
                 break;
             default:
                 break;
         }
     }
 
-    public void visualize(Stage stage) {
+    public void removeall() {
+        vbox.getChildren().clear();
+        hbox.getChildren().clear();
+    }
+
+    /**
+     * Setting up the ChessBoard.
+     *
+     * @param stage Using the existing Stage.
+     */
+    public void visualize(Stage stage, ChessController chessController, String start) {
         for (int row = 0; row < COLUMN_ROW_COUNT; row++) {
             for (int column = 0; column < COLUMN_ROW_COUNT; column++) {
                 Rectangle rect = new Rectangle(RECTSIZE, RECTSIZE);
@@ -164,7 +203,22 @@ public class CreateChessBoard {
             }
             whitefield = !whitefield;
         }
-        Scene scene = new Scene(gpane);
+        gpane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(final MouseEvent event) {
+                Node node = event.getPickResult().getIntersectedNode();
+                int row = GridPane.getRowIndex(node);
+                int column = GridPane.getColumnIndex(node);
+                chessController.mouseclick(row, column);
+            }
+        });
+        starter.setText(start);
+        starter.setEditable(false);
+        Button buttonsave = new Button("Save as sFEN file");
+        Button buttonload = new Button("Load a sFEN file");
+        hbox.getChildren().addAll(starter, buttonsave, buttonload);
+        vbox.getChildren().addAll(hbox, gpane);
+        Scene scene = new Scene(vbox);
         stage.setScene(scene);
     }
 }

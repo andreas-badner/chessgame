@@ -43,7 +43,15 @@ public class ChessTurn extends Observable {
 
     private static final String BLACK_TURN_STRING = "b";
 
-    public ChessTurn() {
+    ChessTurn() {
+    }
+
+    public void guiturn(int startrow, int startcolumn, int endrow, int endcolumn, ChessBoard chessBoard) {
+        chessBoard.insertChessPiece(startrow, startcolumn, NO_PIECE_ON_FIELD);
+        chessBoard.insertChessPiece(endrow, endcolumn, ChessPiece.getBez(chessBoard.getChessPiece(startrow, startcolumn)));
+        whiteturn = !whiteturn;
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -174,13 +182,9 @@ public class ChessTurn extends Observable {
             switch (starter) {
                 case WHITE_TURN_STRING:
                     whiteturn = true;
-                    setChanged();
-                    notifyObservers();
                     return true;
                 case BLACK_TURN_STRING:
                     whiteturn = false;
-                    setChanged();
-                    notifyObservers();
                     return true;
                 default:
                     ChessGame.changeExitCode(INVALID_INPUT_ERROR); //Startspieler-String ist weder b noch w
