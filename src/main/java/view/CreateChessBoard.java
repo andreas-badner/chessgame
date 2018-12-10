@@ -1,15 +1,18 @@
 package view;
 
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 /**
  * Klasse, die alles bezueglich des Schachbretts visualisiert.
  */
-public class CreateChessBoard extends GridPane {
+public class CreateChessBoard {
+
     private static final int COLUMN_ROW_COUNT = 8;
 
     private static boolean whitefield = true;
@@ -34,10 +37,117 @@ public class CreateChessBoard extends GridPane {
 
     private static final String WHITEPAWN = "pawn_white.png";
 
+    private GridPane gpane;
+
+    public CreateChessBoard() {
+    }
+
     /**
      * Erstellt ein visuelles Schachbrett in Standardaufstellung.
      */
-    public void initialize() {
+    public void createBoard() {
+        this.gpane = new GridPane();
+    }
+
+    /**
+     * Fuegt die Figuren visuell ein.
+     *
+     * @param row    Die Reihe auf dem Spielbrett.
+     * @param column Die Spalte auf dem Spielbrett.
+     * @param piece  Die Bezeichung der Figur.
+     */
+    public void insertChessPiece(int row, int column, String piece) {
+        switch (piece) {
+            case "p":
+                Image bpawn1 = new Image(BLACKPAWN);
+                ImageView imagebp1 = new ImageView(bpawn1);
+                imagebp1.setFitHeight(SIZE);
+                imagebp1.setFitWidth(SIZE);
+                gpane.add(imagebp1, column, row);
+                break;
+            case "P":
+                Image wpawn1 = new Image(WHITEPAWN);
+                ImageView imagewp1 = new ImageView(wpawn1);
+                imagewp1.setFitHeight(SIZE);
+                imagewp1.setFitWidth(SIZE);
+                gpane.add(imagewp1, column, row);
+                break;
+            case "r":
+                Image blackimage = new Image(BLACKROOK);
+                ImageView imagevb = new ImageView(blackimage);
+                imagevb.setFitHeight(SIZE);
+                imagevb.setFitWidth(SIZE);
+                gpane.add(imagevb, column, row);
+                break;
+            case "R":
+                Image whiteimage = new Image(WHITEROOK);
+                ImageView imagevw = new ImageView(whiteimage);
+                imagevw.setFitWidth(SIZE);
+                imagevw.setFitHeight(SIZE);
+                gpane.add(imagevw, column, row);
+                break;
+            case "n":
+                blackimage = new Image(BLACKKNIGHT);
+                imagevb = new ImageView(blackimage);
+                imagevb.setFitHeight(SIZE);
+                imagevb.setFitWidth(SIZE);
+                gpane.add(imagevb, column, row);
+                break;
+            case "N":
+                whiteimage = new Image(WHITEKNIGHT);
+                imagevw = new ImageView(whiteimage);
+                imagevw.setFitWidth(SIZE);
+                imagevw.setFitHeight(SIZE);
+                gpane.add(imagevw, column, row);
+                break;
+            case "b":
+                blackimage = new Image(BLACKBISHOP);
+                imagevb = new ImageView(blackimage);
+                imagevb.setFitHeight(SIZE);
+                imagevb.setFitWidth(SIZE);
+                gpane.add(imagevb, column, row);
+                break;
+            case "B":
+                whiteimage = new Image(WHITEBISHOP);
+                imagevw = new ImageView(whiteimage);
+                imagevw.setFitWidth(SIZE);
+                imagevw.setFitHeight(SIZE);
+                gpane.add(imagevw, column, row);
+                break;
+            case "q":
+                blackimage = new Image("queen_black.png");
+                imagevb = new ImageView(blackimage);
+                imagevb.setFitHeight(SIZE);
+                imagevb.setFitWidth(SIZE);
+                gpane.add(imagevb, column, row);
+                break;
+            case "Q":
+                whiteimage = new Image("queen_white.png");
+                imagevw = new ImageView(whiteimage);
+                imagevw.setFitWidth(SIZE);
+                imagevw.setFitHeight(SIZE);
+                gpane.add(imagevw, column, row);
+                break;
+            case "k":
+                blackimage = new Image("king_black.png");
+                imagevb = new ImageView(blackimage);
+                imagevb.setFitHeight(SIZE);
+                imagevb.setFitWidth(SIZE);
+                gpane.add(imagevb, column, row);
+                break;
+            case "K":
+                whiteimage = new Image("king_white.png");
+                imagevw = new ImageView(whiteimage);
+                imagevw.setFitWidth(SIZE);
+                imagevw.setFitHeight(SIZE);
+                gpane.add(imagevw, column, row);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void visualize(Stage stage) {
         for (int row = 0; row < COLUMN_ROW_COUNT; row++) {
             for (int column = 0; column < COLUMN_ROW_COUNT; column++) {
                 Rectangle rect = new Rectangle(RECTSIZE, RECTSIZE);
@@ -50,106 +160,11 @@ public class CreateChessBoard extends GridPane {
                     rect.setStroke(Color.BROWN);
                     whitefield = !whitefield;
                 }
-                this.add(rect, column, row);
+                gpane.add(rect, column, row);
             }
             whitefield = !whitefield;
         }
-    }
-
-    /**
-     * Fuegt die Figuren visuell ein.
-     * @param row Die Reihe auf dem Spielbrett.
-     * @param column Die Spalte auf dem Spielbrett.
-     * @param piece Die Bezeichung der Figur.
-     */
-    public void insertChessPiece(int row, int column, String piece) {
-        switch (piece) {
-            case "p":
-                Image bpawn1 = new Image(BLACKPAWN);
-                ImageView imagebp1 = new ImageView(bpawn1);
-                imagebp1.setFitHeight(SIZE);
-                imagebp1.setFitWidth(SIZE);
-                this.add(imagebp1, column, row);
-                break;
-            case "P":
-                Image wpawn1 = new Image(WHITEPAWN);
-                ImageView imagewp1 = new ImageView(wpawn1);
-                imagewp1.setFitHeight(SIZE);
-                imagewp1.setFitWidth(SIZE);
-                this.add(imagewp1, column, row);
-                break;
-            case "r":
-                Image blackimage = new Image(BLACKROOK);
-                ImageView imagevb = new ImageView(blackimage);
-                imagevb.setFitHeight(SIZE);
-                imagevb.setFitWidth(SIZE);
-                this.add(imagevb, column, row);
-                break;
-            case "R":
-                Image whiteimage = new Image(WHITEROOK);
-                ImageView imagevw = new ImageView(whiteimage);
-                imagevw.setFitWidth(SIZE);
-                imagevw.setFitHeight(SIZE);
-                this.add(imagevw, column, row);
-                break;
-            case "n":
-                blackimage = new Image(BLACKKNIGHT);
-                imagevb = new ImageView(blackimage);
-                imagevb.setFitHeight(SIZE);
-                imagevb.setFitWidth(SIZE);
-                this.add(imagevb, column, row);
-                break;
-            case "N":
-                whiteimage = new Image(WHITEKNIGHT);
-                imagevw = new ImageView(whiteimage);
-                imagevw.setFitWidth(SIZE);
-                imagevw.setFitHeight(SIZE);
-                this.add(imagevw, column, row);
-                break;
-            case "b":
-                blackimage = new Image(BLACKBISHOP);
-                imagevb = new ImageView(blackimage);
-                imagevb.setFitHeight(SIZE);
-                imagevb.setFitWidth(SIZE);
-                this.add(imagevb, column, row);
-                break;
-            case "B":
-                whiteimage = new Image(WHITEBISHOP);
-                imagevw = new ImageView(whiteimage);
-                imagevw.setFitWidth(SIZE);
-                imagevw.setFitHeight(SIZE);
-                this.add(imagevw, column, row);
-                break;
-            case "q":
-                blackimage = new Image("queen_black.png");
-                imagevb = new ImageView(blackimage);
-                imagevb.setFitHeight(SIZE);
-                imagevb.setFitWidth(SIZE);
-                this.add(imagevb, column, row);
-                break;
-            case "Q":
-                whiteimage = new Image("queen_white.png");
-                imagevw = new ImageView(whiteimage);
-                imagevw.setFitWidth(SIZE);
-                imagevw.setFitHeight(SIZE);
-                this.add(imagevw, column, row);
-                break;
-            case "k":
-                blackimage = new Image("king_black.png");
-                imagevb = new ImageView(blackimage);
-                imagevb.setFitHeight(SIZE);
-                imagevb.setFitWidth(SIZE);
-                this.add(imagevb, column, row);
-                break;
-            case "K":
-                whiteimage = new Image("king_white.png");
-                imagevw = new ImageView(whiteimage);
-                imagevw.setFitWidth(SIZE);
-                imagevw.setFitHeight(SIZE);
-                this.add(imagevw, column, row);
-                break;
-            default:
-                break;
-        }
+        Scene scene = new Scene(gpane);
+        stage.setScene(scene);
     }
 }

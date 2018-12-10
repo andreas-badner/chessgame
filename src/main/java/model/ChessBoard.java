@@ -1,11 +1,9 @@
 package model;
 
-
 /**
  * Klasse fuer das Spielbrett - Datenstruktur mit einem char[][].
  */
-class ChessBoard {
-
+public class ChessBoard {
     private static final int LAST_ARRAY_BOARD = 7;
 
     private static final String BLACK_PIECES = "prnbqk";
@@ -14,11 +12,10 @@ class ChessBoard {
 
     private ChessPiece[][] chessboardarr;
 
-
     /**
      * Konstruktor der Klasse.
      */
-    ChessBoard() {
+    /* default */ChessBoard() {
         chessboardarr = new ChessPiece[ChessTurn.COLUMN_ROW_COUNT][ChessTurn.COLUMN_ROW_COUNT];
     }
 
@@ -44,7 +41,7 @@ class ChessBoard {
      * @param column Position in der Spalte
      * @return true wenn eine Figur auf dem Feld ist
      */
-    boolean hasChessPiece(final int row, final int column) {
+    public boolean hasChessPiece(final int row, final int column) {
         return (ChessTurn.getValidInputChars().contains(ChessPiece.getBez(getChessPiece(row, column))));
     }
 
@@ -53,12 +50,8 @@ class ChessBoard {
      * @param column Position in der Spalte
      * @return gibt die Figur auf dem gesuchten Feld aus.
      */
-    /* default */ChessPiece getChessPiece(final int row, final int column) {
+    public ChessPiece getChessPiece(final int row, final int column) {
         return (chessboardarr[row][column]);
-    }
-
-    ChessPiece[][] getChessboardarr() {
-        return this.chessboardarr;
     }
 
     /**

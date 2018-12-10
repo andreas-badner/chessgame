@@ -3,7 +3,7 @@ package model;
 /**
  * Klasse, die Figurenobjekte erzeugt und deren Daten speichert.
  */
-class ChessPiece {
+public class ChessPiece {
     private String bez;
 
     private String color;
@@ -13,7 +13,7 @@ class ChessPiece {
         this.color = farbe;
     }
 
-    static String getBez(ChessPiece figur) {
+    public static String getBez(ChessPiece figur) {
         return figur.bez;
     }
 

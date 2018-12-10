@@ -1,3 +1,5 @@
+package model;
+
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -10,7 +12,7 @@ import javafx.scene.layout.Pane;
  * Klasse zum Starten der Applikation.
  * Startet mit GUI oder Konsole.
  */
-public class ChessGame extends Application {
+public class ChessGUI extends Application {
 
     /**
      * main-Methode.
@@ -18,25 +20,17 @@ public class ChessGame extends Application {
      * @param args prueft Startparameter auf "--gui", sonst Kommandozeile
      */
     public static void main(String[] args) {
-        if (args.length == 1) {
-            if (args[0].equals("--gui")) {
-                launch();
-            } else {
-                model.ChessTurn chessturn = new model.ChessTurn();
-                chessturn.run(args);
-            }
-        } else {
-            model.ChessTurn chessturn = new model.ChessTurn();
-            chessturn.run(args);
-        }
-        System.exit(0);
+        launch(args);
     }
 
     @Override
     public void start(final Stage stage) throws IOException {
+        model.ChessGame chessGame = new model.ChessGame(new String[] {"standardgui"});
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("ChessFXML.fxml"));
         Pane root = fxmlLoader.load();
         controller.ChessController chessController = fxmlLoader.getController();
+        chessGame.addObserver(chessController);
+        chessController.setModel(chessGame);
         Scene menuscene = new Scene(root);
         stage.setTitle("ChessGame");
         stage.setScene(menuscene);
