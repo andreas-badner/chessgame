@@ -44,7 +44,7 @@ class ChessBoard {
      * @param column Position in der Spalte
      * @return true wenn eine Figur auf dem Feld ist
      */
-    /* default */boolean hasChessPiece(final int row, final int column) {
+    boolean hasChessPiece(final int row, final int column) {
         return (ChessTurn.getValidInputChars().contains(ChessPiece.getBez(getChessPiece(row, column))));
     }
 
@@ -55,6 +55,10 @@ class ChessBoard {
      */
     /* default */ChessPiece getChessPiece(final int row, final int column) {
         return (chessboardarr[row][column]);
+    }
+
+    ChessPiece[][] getChessboardarr() {
+        return this.chessboardarr;
     }
 
     /**

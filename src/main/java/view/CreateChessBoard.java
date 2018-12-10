@@ -16,16 +16,6 @@ public class CreateChessBoard extends GridPane {
 
     private static final int SIZE = 100;
 
-    private static final int LAST_ROW = 7;
-
-    private static final int SEVENTHROW = 6;
-
-    private static final int SIXTHROW = 5;
-
-    private static final int FIFTHROW = 4;
-
-    private static final int FOURTHROW = 3;
-
     private static final int RECTSIZE = 111;
 
     private static final String BLACKROOK = "rook_black.png";
@@ -61,121 +51,105 @@ public class CreateChessBoard extends GridPane {
                     whitefield = !whitefield;
                 }
                 this.add(rect, column, row);
-                if (row == 0) {
-                    if (column == 0) {
-                        Image blackimage = new Image(BLACKROOK);
-                        ImageView imagevb = new ImageView(blackimage);
-                        imagevb.setFitHeight(SIZE);
-                        imagevb.setFitWidth(SIZE);
-                        this.add(imagevb, column, row);
-                    } else if (column == 1) {
-                        Image blackimage = new Image(BLACKKNIGHT);
-                        ImageView imagevb = new ImageView(blackimage);
-                        imagevb.setFitHeight(SIZE);
-                        imagevb.setFitWidth(SIZE);
-                        this.add(imagevb, column, row);
-                    } else if (column == 2) {
-                        Image blackimage = new Image(BLACKBISHOP);
-                        ImageView imagevb = new ImageView(blackimage);
-                        imagevb.setFitHeight(SIZE);
-                        imagevb.setFitWidth(SIZE);
-                        this.add(imagevb, column, row);
-                    } else if (column == FOURTHROW) {
-                        Image blackimage = new Image("queen_black.png");
-                        ImageView imagevb = new ImageView(blackimage);
-                        imagevb.setFitHeight(SIZE);
-                        imagevb.setFitWidth(SIZE);
-                        this.add(imagevb, column, row);
-                    } else if (column == FIFTHROW) {
-                        Image blackimage = new Image("king_black.png");
-                        ImageView imagevb = new ImageView(blackimage);
-                        imagevb.setFitHeight(SIZE);
-                        imagevb.setFitWidth(SIZE);
-                        this.add(imagevb, column, row);
-                    } else if (column == SIXTHROW) {
-                        Image blackimage = new Image(BLACKBISHOP);
-                        ImageView imagevb = new ImageView(blackimage);
-                        imagevb.setFitHeight(SIZE);
-                        imagevb.setFitWidth(SIZE);
-                        this.add(imagevb, column, row);
-                    } else if (column == SEVENTHROW) {
-                        Image blackimage = new Image(BLACKKNIGHT);
-                        ImageView imagevb = new ImageView(blackimage);
-                        imagevb.setFitHeight(SIZE);
-                        imagevb.setFitWidth(SIZE);
-                        this.add(imagevb, column, row);
-                    } else {
-                        Image blackimage = new Image(BLACKROOK);
-                        ImageView imagevb = new ImageView(blackimage);
-                        imagevb.setFitHeight(SIZE);
-                        imagevb.setFitWidth(SIZE);
-                        this.add(imagevb, column, row);
-                    }
-                } else if (row == LAST_ROW) {
-                    if (column == 0) {
-                        Image whiteimage = new Image(WHITEROOK);
-                        ImageView imagevw = new ImageView(whiteimage);
-                        imagevw.setFitWidth(SIZE);
-                        imagevw.setFitHeight(SIZE);
-                        this.add(imagevw, column, row);
-                    } else if (column == 1) {
-                        Image whiteimage = new Image(WHITEKNIGHT);
-                        ImageView imagevw = new ImageView(whiteimage);
-                        imagevw.setFitWidth(SIZE);
-                        imagevw.setFitHeight(SIZE);
-                        this.add(imagevw, column, row);
-                    } else if (column == 2) {
-                        Image whiteimage = new Image(WHITEBISHOP);
-                        ImageView imagevw = new ImageView(whiteimage);
-                        imagevw.setFitWidth(SIZE);
-                        imagevw.setFitHeight(SIZE);
-                        this.add(imagevw, column, row);
-                    } else if (column == FOURTHROW) {
-                        Image whiteimage = new Image("queen_white.png");
-                        ImageView imagevw = new ImageView(whiteimage);
-                        imagevw.setFitWidth(SIZE);
-                        imagevw.setFitHeight(SIZE);
-                        this.add(imagevw, column, row);
-                    } else if (column == FIFTHROW) {
-                        Image whiteimage = new Image("king_white.png");
-                        ImageView imagevw = new ImageView(whiteimage);
-                        imagevw.setFitWidth(SIZE);
-                        imagevw.setFitHeight(SIZE);
-                        this.add(imagevw, column, row);
-                    } else if (column == SIXTHROW) {
-                        Image whiteimage = new Image(WHITEBISHOP);
-                        ImageView imagevw = new ImageView(whiteimage);
-                        imagevw.setFitWidth(SIZE);
-                        imagevw.setFitHeight(SIZE);
-                        this.add(imagevw, column, row);
-                    } else if (column == SEVENTHROW) {
-                        Image whiteimage = new Image(WHITEKNIGHT);
-                        ImageView imagevw = new ImageView(whiteimage);
-                        imagevw.setFitWidth(SIZE);
-                        imagevw.setFitHeight(SIZE);
-                        this.add(imagevw, column, row);
-                    } else {
-                        Image whiteimage = new Image(WHITEROOK);
-                        ImageView imagevw = new ImageView(whiteimage);
-                        imagevw.setFitWidth(SIZE);
-                        imagevw.setFitHeight(SIZE);
-                        this.add(imagevw, column, row);
-                    }
-                } else if (row == 1) {
-                    Image bpawn1 = new Image(BLACKPAWN);
-                    ImageView imagebp1 = new ImageView(bpawn1);
-                    imagebp1.setFitHeight(SIZE);
-                    imagebp1.setFitWidth(SIZE);
-                    this.add(imagebp1, column, row);
-                } else if (row == SEVENTHROW) {
-                    Image wpawn1 = new Image(WHITEPAWN);
-                    ImageView imagewp1 = new ImageView(wpawn1);
-                    imagewp1.setFitHeight(SIZE);
-                    imagewp1.setFitWidth(SIZE);
-                    this.add(imagewp1, column, row);
-                }
             }
             whitefield = !whitefield;
+        }
+    }
+
+    /**
+     * Fuegt die Figuren visuell ein.
+     * @param row Die Reihe auf dem Spielbrett.
+     * @param column Die Spalte auf dem Spielbrett.
+     * @param piece Die Bezeichung der Figur.
+     */
+    public void insertChessPiece(int row, int column, String piece) {
+        switch (piece) {
+            case "p":
+                Image bpawn1 = new Image(BLACKPAWN);
+                ImageView imagebp1 = new ImageView(bpawn1);
+                imagebp1.setFitHeight(SIZE);
+                imagebp1.setFitWidth(SIZE);
+                this.add(imagebp1, column, row);
+                break;
+            case "P":
+                Image wpawn1 = new Image(WHITEPAWN);
+                ImageView imagewp1 = new ImageView(wpawn1);
+                imagewp1.setFitHeight(SIZE);
+                imagewp1.setFitWidth(SIZE);
+                this.add(imagewp1, column, row);
+                break;
+            case "r":
+                Image blackimage = new Image(BLACKROOK);
+                ImageView imagevb = new ImageView(blackimage);
+                imagevb.setFitHeight(SIZE);
+                imagevb.setFitWidth(SIZE);
+                this.add(imagevb, column, row);
+                break;
+            case "R":
+                Image whiteimage = new Image(WHITEROOK);
+                ImageView imagevw = new ImageView(whiteimage);
+                imagevw.setFitWidth(SIZE);
+                imagevw.setFitHeight(SIZE);
+                this.add(imagevw, column, row);
+                break;
+            case "n":
+                blackimage = new Image(BLACKKNIGHT);
+                imagevb = new ImageView(blackimage);
+                imagevb.setFitHeight(SIZE);
+                imagevb.setFitWidth(SIZE);
+                this.add(imagevb, column, row);
+                break;
+            case "N":
+                whiteimage = new Image(WHITEKNIGHT);
+                imagevw = new ImageView(whiteimage);
+                imagevw.setFitWidth(SIZE);
+                imagevw.setFitHeight(SIZE);
+                this.add(imagevw, column, row);
+                break;
+            case "b":
+                blackimage = new Image(BLACKBISHOP);
+                imagevb = new ImageView(blackimage);
+                imagevb.setFitHeight(SIZE);
+                imagevb.setFitWidth(SIZE);
+                this.add(imagevb, column, row);
+                break;
+            case "B":
+                whiteimage = new Image(WHITEBISHOP);
+                imagevw = new ImageView(whiteimage);
+                imagevw.setFitWidth(SIZE);
+                imagevw.setFitHeight(SIZE);
+                this.add(imagevw, column, row);
+                break;
+            case "q":
+                blackimage = new Image("queen_black.png");
+                imagevb = new ImageView(blackimage);
+                imagevb.setFitHeight(SIZE);
+                imagevb.setFitWidth(SIZE);
+                this.add(imagevb, column, row);
+                break;
+            case "Q":
+                whiteimage = new Image("queen_white.png");
+                imagevw = new ImageView(whiteimage);
+                imagevw.setFitWidth(SIZE);
+                imagevw.setFitHeight(SIZE);
+                this.add(imagevw, column, row);
+                break;
+            case "k":
+                blackimage = new Image("king_black.png");
+                imagevb = new ImageView(blackimage);
+                imagevb.setFitHeight(SIZE);
+                imagevb.setFitWidth(SIZE);
+                this.add(imagevb, column, row);
+                break;
+            case "K":
+                whiteimage = new Image("king_white.png");
+                imagevw = new ImageView(whiteimage);
+                imagevw.setFitWidth(SIZE);
+                imagevw.setFitHeight(SIZE);
+                this.add(imagevw, column, row);
+                break;
+            default:
+                break;
         }
     }
 }

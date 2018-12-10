@@ -8,15 +8,20 @@ import javafx.scene.control.TextField;
 
 import view.CreateChessBoard;
 
+/**
+ * Controller fuer MVC, nachdem Spiel gestartet wurde.
+ */
 public class ChessBoardController implements Observer {
+
+    private static final int COLUMN_ROW_COUNT = 8;
 
     private model.ChessTurn chessTurn;
 
     @FXML
-    private TextField zugrecht;
+    private TextField zugrecht = new TextField();
 
     @FXML
-    private CreateChessBoard createChessBoard;
+    private CreateChessBoard createChessBoard = new CreateChessBoard();
 
     public ChessBoardController() {
     }
@@ -24,17 +29,14 @@ public class ChessBoardController implements Observer {
     @FXML
     private void initialize() {
         this.createChessBoard.initialize();
-        setzugrecht(true);
     }
 
-    @FXML
     private void setzugrecht(boolean recht) {
         if (recht) {
             zugrecht.setText("Turn: White");
         } else {
             zugrecht.setText("Turn: Black");
         }
-
     }
 
     void setModel(final model.ChessTurn chessTurn) {
@@ -48,6 +50,18 @@ public class ChessBoardController implements Observer {
                 setzugrecht(true);
             } else {
                 setzugrecht(false);
+            }
+            insertChessPiece();
+        }
+    }
+
+    @FXML
+    private void insertChessPiece() {
+        for (int row = 0; row < COLUMN_ROW_COUNT; row++) {
+            for (int column = 0; column < COLUMN_ROW_COUNT; column++) {
+                if (chessTurn.hasChessPiece(row, column)) {
+                    this.createChessBoard.insertChessPiece(row, column, chessTurn.getPiecebez(row, column));
+                }
             }
         }
     }

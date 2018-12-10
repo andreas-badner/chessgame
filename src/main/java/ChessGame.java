@@ -34,11 +34,9 @@ public class ChessGame extends Application {
 
     @Override
     public void start(final Stage stage) throws IOException {
-        model.ChessTurn chessturn = new model.ChessTurn();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("ChessFXML.fxml"));
         Pane root = fxmlLoader.load();
         controller.ChessController chessController = fxmlLoader.getController();
-        chessController.setModel(chessturn);
         Scene menuscene = new Scene(root);
         stage.setTitle("ChessGame");
         stage.setScene(menuscene);

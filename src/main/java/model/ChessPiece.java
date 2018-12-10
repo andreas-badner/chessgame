@@ -5,7 +5,9 @@ package model;
  */
 class ChessPiece {
     private String bez;
+
     private String color;
+
     ChessPiece(String bez, String farbe) {
         this.bez = bez;
         this.color = farbe;

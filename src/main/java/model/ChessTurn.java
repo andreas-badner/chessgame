@@ -12,6 +12,8 @@ public final class ChessTurn extends Observable {
 
     static final int FOR_LOOP_ZERO = 0;
 
+    private static boolean gui;
+
     private static int errorcode = 0;
 
     private static boolean whiteturn; //true wenn weiss dran ist
@@ -79,9 +81,6 @@ public final class ChessTurn extends Observable {
     public void runstandard() {
         try {
             insertstandard();
-            while (userinput) {
-                userTurn(chessboard);
-            }
         } catch (ChessException e) {
             System.exit(errorcode);
         }
@@ -96,8 +95,24 @@ public final class ChessTurn extends Observable {
         notifyObservers();
     }
 
-    public boolean getuserinput() {
-        return userinput;
+    public void setgui(boolean set) {
+        gui = set;
+    }
+
+    public ChessPiece[][] getchessboardarr() {
+        return chessboard.getChessboardarr();
+    }
+
+    public boolean hasChessPiece(int row, int column) {
+        return chessboard.hasChessPiece(row, column);
+    }
+
+    private ChessPiece getChessPiece(int row, int column) {
+        return chessboard.getChessPiece(row, column);
+    }
+
+    public String getPiecebez(int row, int column) {
+        return ChessPiece.getBez(getChessPiece(row, column));
     }
 
     /**
@@ -117,6 +132,11 @@ public final class ChessTurn extends Observable {
      * @param chessboard bekommt das erzeugte Schachbrett
      */
     private void userTurn(final ChessBoard chessboard) throws ChessException {
+//        if (gui) {
+//
+//        } else {
+//
+//        }
         Scanner reader = new Scanner(System.in);
         if (reader.hasNextLine()) {
             final String turns = reader.nextLine();
@@ -195,8 +215,6 @@ public final class ChessTurn extends Observable {
             final String startercustom = input[0].substring(input[0].length() - 1);
             if (validString(customstellung, startercustom, chessboard)) {
                 System.out.println(input[0]);
-                setChanged();
-                notifyObservers();
             } else {
                 changeExitCode(INVALID_INPUT_ERROR); //String ist nicht sFEN - ungueltig.
                 throw new ChessException();
@@ -213,8 +231,6 @@ public final class ChessTurn extends Observable {
         final String startergrund = grundstellung.substring(grundstellung.length() - 1);
         if (validString(stellung, startergrund, chessboard)) {
             System.out.println(grundstellung);
-            setChanged();
-            notifyObservers();
         }
     }
 
@@ -222,8 +238,8 @@ public final class ChessTurn extends Observable {
      * @param input gegebene Schachstellung vom Nutzer, die ueberprueft werden muss
      * @return true wenn die Schachstellung nach der Notation zulaessig ist
      */
-    private static boolean validString(final String input, final String starter,
-                                       final ChessBoard chessboard) throws ChessException {
+    private boolean validString(final String input, final String starter,
+                                final ChessBoard chessboard) throws ChessException {
         final String[] zeilen = input.split("/", COLUMN_ROW_COUNT);
         if (zeilen.length != COLUMN_ROW_COUNT) {
             changeExitCode(INVALID_INPUT_ERROR); //acht Reihen sind nicht belegt.
@@ -258,9 +274,13 @@ public final class ChessTurn extends Observable {
             switch (starter) {
                 case WHITE_TURN_STRING:
                     whiteturn = true;
+                    setChanged();
+                    notifyObservers();
                     return true;
                 case BLACK_TURN_STRING:
                     whiteturn = false;
+                    setChanged();
+                    notifyObservers();
                     return true;
                 default:
                     changeExitCode(INVALID_INPUT_ERROR); //Startspieler-String ist weder b noch w
