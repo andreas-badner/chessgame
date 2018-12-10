@@ -7,14 +7,13 @@ import java.util.Observable;
  * ChessGame Hauptklasse - Zur Ausgabe des Spielfelds unter bedingten Eingaben.
  */
 public final class ChessGame extends Observable {
+    private static boolean userinput = true;
+
+    private static int errorcode = 0;
 
     public final ChessBoard chessBoard;
 
     public final ChessTurn chessTurn;
-
-    private static boolean userinput = true;
-
-    private static int errorcode = 0;
 
 
     /**

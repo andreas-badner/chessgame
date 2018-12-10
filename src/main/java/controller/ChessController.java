@@ -7,7 +7,6 @@ import java.util.Observer;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-import javafx.stage.Stage;
 
 import view.CreateChessBoard;
 
