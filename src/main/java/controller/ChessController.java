@@ -74,8 +74,8 @@ public class ChessController implements Observer {
             for (int column = 0; column < COLUMN_ROW_COUNT; column++) {
                 if (chessGame.chessBoard.hasChessPiece(row, column)) {
                     this.createChessBoard.insertChessPiece(row, column,
-                                                           model.ChessPiece.getBez(chessGame.chessBoard.getChessPiece(row,
-                                                                                                                      column)));
+                        model.ChessPiece.getBez(chessGame.chessBoard.getChessPiece(row,
+                            column)));
                 }
             }
         }
@@ -97,7 +97,8 @@ public class ChessController implements Observer {
         if (counter == 0) {
             if (chessGame.chessBoard.hasChessPiece(row, column) && (
                 chessGame.chessTurn.getwhiteturn() && chessPiece.equals(chessPiece.toUpperCase()) ||
-                !chessGame.chessTurn.getwhiteturn() && chessPiece.equals(chessPiece.toLowerCase()))) {
+                    !chessGame.chessTurn.getwhiteturn() && chessPiece.equals(chessPiece.toLowerCase()))) {
+                createChessBoard.highlightfield(row, column);
                 counter++;
                 rowlist.add(row);
                 columnlist.add(column);
@@ -106,9 +107,19 @@ public class ChessController implements Observer {
             rowlist.add(row);
             columnlist.add(column);
             if (rowlist.get(0).equals(rowlist.get(1)) && columnlist.get(0).equals(columnlist.get(1))) {
+                createChessBoard.removehighlight(row, column);
                 rowlist.clear();
                 columnlist.clear();
                 counter = 0;
+            } else if (chessGame.chessBoard.hasChessPiece(row, column) &&
+                chessGame.chessTurn.getwhiteturn() && chessPiece.equals(chessPiece.toUpperCase()) ||
+                !chessGame.chessTurn.getwhiteturn() && chessPiece.equals(chessPiece.toLowerCase())) {
+                createChessBoard.removehighlight(rowlist.get(0), columnlist.get(0));
+                rowlist.clear();
+                columnlist.clear();
+                rowlist.add(row);
+                columnlist.add(column);
+                createChessBoard.highlightfield(row, column);
             } else {
                 chessGame.guiturn(rowlist.get(0), columnlist.get(0), rowlist.get(1), columnlist.get(1), chessGame.chessBoard);
                 rowlist.clear();

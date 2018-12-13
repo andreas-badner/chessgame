@@ -6,6 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Light;
+import javafx.scene.effect.Lighting;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -206,11 +208,40 @@ public class CreateChessBoard {
         HBox hbox = new HBox(10);
         VBox vbox = new VBox(10);
         starter.setText(start);
+        starter.setDisable(true);
         Button buttonsave = new Button("Save as sFEN file");
         Button buttonload = new Button("Load a sFEN file");
         hbox.getChildren().addAll(starter, buttonsave, buttonload);
         vbox.getChildren().addAll(hbox, gpane);
         Scene scene = new Scene(vbox);
         stage.setScene(scene);
+    }
+
+    public void highlightfield(int row, int column) {
+        Light.Distant light = new Light.Distant();
+        light.setAzimuth(0);
+        Lighting highlight = new Lighting();
+        highlight.setLight(light);
+        highlight.setSurfaceScale(1.0);
+        Node node = getNode(row, column);
+        if (node != null) {
+            node.setEffect(highlight);
+        }
+    }
+
+    public void removehighlight(int row, int column) {
+        Node node = getNode(row, column);
+        if (node != null) {
+            node.setEffect(null);
+        }
+    }
+
+    private Node getNode(int row, int column) {
+        for (Node node : gpane.getChildren()) {
+            if (gpane.getColumnIndex(node) == column && gpane.getRowIndex(node) == row) {
+                return node;
+            }
+        }
+        return null;
     }
 }
