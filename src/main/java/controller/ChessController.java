@@ -8,6 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
 
+import javafx.fxml.FXML;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -82,6 +83,10 @@ public class ChessController implements Observer {
                 }
             }
         }
+    }
+
+    public void loadGame() {
+        loadgame();
     }
 
     private void visualize() {

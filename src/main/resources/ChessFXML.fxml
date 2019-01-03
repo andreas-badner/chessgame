@@ -16,7 +16,7 @@
     </Menu>
     <Menu mnemonicParsing="false" text="Load">
 
-      <MenuItem mnemonicParsing="false" text="Load sFEN-file"/>
+      <MenuItem mnemonicParsing="false" text="Load sFEN-file" onAction="#loadGame"/>
 
     </Menu>
 
