@@ -47,6 +47,15 @@ public final class ChessGame extends Observable {
         setChanged();
         notifyObservers();
     }
+    public void changeGame(String[] input) {
+        try {
+            chessTurn.checkStartInput(input, chessBoard);
+        } catch (ChessException e) {
+            System.exit(errorcode);
+        }
+        setChanged();
+        notifyObservers();
+    }
 
     /**
      * Beendet bei leerer Eingabe das Programm.

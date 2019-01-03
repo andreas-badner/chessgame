@@ -14,10 +14,9 @@
       <MenuItem mnemonicParsing="false" onAction="#menu" text="Standard"/>
 
     </Menu>
-    <Menu mnemonicParsing="false" text="Save | Load">
+    <Menu mnemonicParsing="false" text="Load">
 
-      <MenuItem mnemonicParsing="false" text="Save"/>
-      <MenuItem mnemonicParsing="false" text="Load"/>
+      <MenuItem mnemonicParsing="false" text="Load sFEN-file"/>
 
     </Menu>
 

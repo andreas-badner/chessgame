@@ -1,5 +1,8 @@
 package view;
 
+import javax.swing.*;
+
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.scene.Node;
@@ -210,7 +213,19 @@ public class CreateChessBoard {
         starter.setText(start);
         starter.setDisable(true);
         Button buttonsave = new Button("Save as sFEN file");
+        buttonsave.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent event) {
+                chessController.savegame();
+            }
+        });
         Button buttonload = new Button("Load a sFEN file");
+        buttonload.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent event) {
+                chessController.loadgame();
+            }
+        });
         hbox.getChildren().addAll(starter, buttonsave, buttonload);
         vbox.getChildren().addAll(hbox, gpane);
         Scene scene = new Scene(vbox);

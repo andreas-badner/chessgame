@@ -1,10 +1,15 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Scanner;
 
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
@@ -128,7 +133,49 @@ public class ChessController implements Observer {
                 counter = 0;
             }
         }
+    }
 
+    public void savegame() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Game");
+        fileChooser.setInitialFileName("SavedChessGame.fen");
+        fileChooser.getExtensionFilters().addAll(new ExtensionFilter("sFEN Files", "*.fen"));
+        File selectedFile = fileChooser.showSaveDialog(null);
+        if (selectedFile != null) {
+            saveGameAsText(chessGame.chessBoard.createCurrentChessBoard(), selectedFile);
+        }
+    }
 
+    public void loadgame() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Load Game");
+        fileChooser.getExtensionFilters().addAll(new ExtensionFilter("sFEN Files", "*.fen"));
+        File selectedFile = fileChooser.showOpenDialog(null);
+        String[] input = new String[1];
+        if (selectedFile != null) {
+            input[0] = readText(selectedFile);
+            chessGame.changeGame(input);
+        }
+    }
+
+    private void saveGameAsText(String gamesetting, File file) {
+        try {
+            PrintWriter writer = new PrintWriter(file, "UTF-8");
+            writer.println(gamesetting);
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error: Game couldn't be saved.");
+        }
+    }
+
+    private String readText(File file) {
+        String input = "";
+        try {
+            Scanner scanner = new Scanner(file);
+            input = scanner.nextLine();
+        } catch (IOException e) {
+            System.out.println("Error: File couldn't be loaded.");
+        }
+        return input;
     }
 }

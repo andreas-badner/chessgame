@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e8eb280-d7c7-4c2d-8949-be0bd5615b09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ChessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ChessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ChessGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/CreateChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/CreateChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ChessFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ChessFXML.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,7 +27,7 @@
     <session id="-963663246">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="20" />
+          <entry key="project.closed" value="21" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.168" value="1" />
           <entry key="project.open.time.2" value="1" />
@@ -41,11 +43,11 @@
           <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.49" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.open.time.50" value="1" />
+          <entry key="project.open.time.50" value="2" />
           <entry key="project.open.time.57" value="2" />
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="23" />
+          <entry key="project.opened" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -57,8 +59,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="41274" />
-          <entry key="XML" value="969" />
+          <entry key="JAVA" value="42959" />
+          <entry key="XML" value="983" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -72,8 +74,8 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="3" />
-          <entry key="JAVA" value="151" />
-          <entry key="XML" value="12" />
+          <entry key="JAVA" value="152" />
+          <entry key="XML" value="13" />
         </counts>
       </usages-collector>
     </session>
@@ -86,21 +88,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="390">
+              <caret line="56" column="26" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#489#490#0" expanded="true" />
-                <element signature="e#517#518#0" expanded="true" />
+                <element signature="e#1691#1692#0" expanded="true" />
+                <element signature="e#1724#1725#0" expanded="true" />
+                <element signature="e#1840#1841#0" expanded="true" />
+                <element signature="e#1872#1873#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -109,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessTurn.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="49" column="90" selection-start-line="49" selection-start-column="90" selection-end-line="49" selection-end-column="90" />
+            <state relative-caret-position="-1050">
+              <caret line="53" column="21" lean-forward="true" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,17 +115,27 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="146">
+              <caret line="59" column="45" lean-forward="true" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/ChessFXML.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/ChessController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="128" column="13" lean-forward="true" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
+            <state relative-caret-position="91">
+              <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -142,24 +146,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/CreateChessBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="240" column="95" lean-forward="true" selection-start-line="240" selection-start-column="95" selection-end-line="240" selection-end-column="95" />
+            <state relative-caret-position="388">
+              <caret line="225" column="43" selection-start-line="225" selection-start-column="43" selection-end-line="225" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessPiece.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#351#352#0" expanded="true" />
-                <element signature="e#392#393#0" expanded="true" />
-                <element signature="e#426#427#0" expanded="true" />
+                <element signature="e#8024#8025#0" expanded="true" />
+                <element signature="e#8070#8071#0" expanded="true" />
+                <element signature="e#8299#8300#0" expanded="true" />
+                <element signature="e#8345#8346#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -182,6 +176,7 @@
       <find>setchan</find>
       <find>setstage</find>
       <find>whiteturn</find>
+      <find>load</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,19 +194,19 @@
         <option value="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/ChessBoard.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/techfak/gse/abadner/model/ChessGame.java" />
         <option value="$PROJECT_DIR$/src/main/java/ChessStart.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/ChessFXML.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/ChessBoardFXML.fxml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ChessGame.java" />
         <option value="$PROJECT_DIR$/src/main/java/ChessGUI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/ChessBoard.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/ChessBoardController.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/ChessPiece.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/ChessGUI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/ChessGame.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/ChessTurn.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/ChessFXML.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/view/CreateChessBoard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/ChessBoard.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/ChessController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/ChessTurn.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/ChessGame.java" />
       </list>
     </option>
   </component>
@@ -308,7 +303,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546521842852" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546527566671" />
     <property name="last_opened_file_path" value="$USER_HOME$/chessboardtest" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -400,7 +395,7 @@
     <frame x="0" y="25" width="1920" height="1008" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931973" visible="true" weight="0.17022412" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931973" visible="true" weight="0.17182498" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -410,7 +405,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32915717" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49893278" visible="true" weight="0.19362187" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4994664" weight="0.13553531" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4994664" weight="0.33143508" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32915717" />
@@ -690,14 +685,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/ChessBoardController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/ChessFXML.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Observer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -742,27 +729,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessBoard.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/CreateChessBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessTurn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="49" column="90" selection-start-line="49" selection-start-column="90" selection-end-line="49" selection-end-column="90" />
+        <state relative-caret-position="388">
+          <caret line="225" column="43" selection-start-line="225" selection-start-column="43" selection-end-line="225" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#8024#8025#0" expanded="true" />
+            <element signature="e#8070#8071#0" expanded="true" />
+            <element signature="e#8299#8300#0" expanded="true" />
+            <element signature="e#8345#8346#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="40">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#489#490#0" expanded="true" />
@@ -771,27 +755,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessGame.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+        <state relative-caret-position="146">
+          <caret line="59" column="45" lean-forward="true" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/CreateChessBoard.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="240" column="95" lean-forward="true" selection-start-line="240" selection-start-column="95" selection-end-line="240" selection-end-column="95" />
+        <state relative-caret-position="390">
+          <caret line="56" column="26" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
+          <folding>
+            <element signature="e#1691#1692#0" expanded="true" />
+            <element signature="e#1724#1725#0" expanded="true" />
+            <element signature="e#1840#1841#0" expanded="true" />
+            <element signature="e#1872#1873#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ChessTurn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1050">
+          <caret line="53" column="21" lean-forward="true" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/ChessFXML.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/ChessController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="128" column="13" lean-forward="true" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
+        <state relative-caret-position="91">
+          <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

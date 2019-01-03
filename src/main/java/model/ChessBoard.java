@@ -57,7 +57,7 @@ public class ChessBoard {
     /**
      * @return gibt die aktuelle Schachstellung zurueck.
      */
-    /* default */String createCurrentChessBoard() {
+    public String createCurrentChessBoard() {
         final StringBuilder stringbuilder = new StringBuilder();
         for (int i = ChessTurn.FOR_LOOP_ZERO; i < ChessTurn.COLUMN_ROW_COUNT; i++) {
             int sum = 0;
