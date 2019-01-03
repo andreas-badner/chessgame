@@ -51,8 +51,6 @@ public class ChessTurn extends Observable {
         chessBoard.insertChessPiece(startrow, startcolumn, NO_PIECE_ON_FIELD);
         chessBoard.insertChessPiece(endrow, endcolumn, piece);
         whiteturn = !whiteturn;
-        setChanged();
-        notifyObservers();
     }
 
     /**
@@ -157,22 +155,28 @@ public class ChessTurn extends Observable {
         char currentchar;
         for (int i = FOR_LOOP_ZERO; i < COLUMN_ROW_COUNT; i++) {
             int rowsum = 0;
-            int fillone;
-            for (int j = FOR_LOOP_ZERO; j < zeilen[i].length(); j++) {
-                currentchar = zeilen[i].charAt(j);
+            int fillone = 0;
+            int valuepos = 0;
+            for (int j = FOR_LOOP_ZERO; j < COLUMN_ROW_COUNT; j++) {
+                currentchar = zeilen[i].charAt(valuepos);
                 if (VALID_INPUT_CHARS.indexOf(currentchar) >= 0 && rowsum < COLUMN_ROW_COUNT) {
                     rowsum++;
                     chessboard.insertChessPiece(i, j, Character.toString(currentchar));
                 } else if (VALID_INPUT_NUMBERS.indexOf(currentchar) >= 0 && rowsum < COLUMN_ROW_COUNT) {
                     rowsum += Character.getNumericValue(currentchar);
                     fillone = Character.getNumericValue(currentchar);
-                    for (int k = j; k < fillone; k++) {
+                    for (int k = j; k < (j + fillone); k++) {
                         chessboard.insertChessPiece(i, k, NO_PIECE_ON_FIELD);
                     }
                 } else {
                     ChessGame.changeExitCode(INVALID_INPUT_ERROR); //char ist nicht fuer sFEN gueltig.
                     throw new ChessException();
                 }
+                if (fillone != 0) {
+                    j += (fillone - 1);
+                }
+                fillone = 0;
+                valuepos++;
             }
             if (rowsum != COLUMN_ROW_COUNT) {
                 ChessGame.changeExitCode(INVALID_INPUT_ERROR); //weniger/mehr als acht Felder belegt.

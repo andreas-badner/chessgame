@@ -78,9 +78,7 @@ public class ChessController implements Observer {
         for (int row = 0; row < COLUMN_ROW_COUNT; row++) {
             for (int column = 0; column < COLUMN_ROW_COUNT; column++) {
                 if (chessGame.chessBoard.hasChessPiece(row, column)) {
-                    this.createChessBoard.insertChessPiece(row, column,
-                                                           model.ChessPiece.getBez(chessGame.chessBoard.getChessPiece(row,
-                                                                                                                      column)));
+                    createChessBoard.insertChessPiece(row, column, model.ChessPiece.getBez(chessGame.chessBoard.getChessPiece(row, column)));
                 }
             }
         }
