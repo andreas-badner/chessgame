@@ -238,7 +238,7 @@ public class CreateChessBoard {
 
     private Node getNode(int row, int column) {
         for (Node node : gpane.getChildren()) {
-            if (gpane.getColumnIndex(node) == column && gpane.getRowIndex(node) == row) {
+            if (GridPane.getColumnIndex(node) == column && GridPane.getRowIndex(node) == row) {
                 return node;
             }
         }
