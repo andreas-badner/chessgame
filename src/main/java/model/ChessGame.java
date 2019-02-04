@@ -3,6 +3,11 @@ package model;
 
 import java.util.Observable;
 
+import uniChess.Chesster;
+import uniChess.Color;
+import uniChess.Game;
+import uniChess.Player;
+
 /**
  * ChessGame Hauptklasse - Zur Ausgabe des Spielfelds unter bedingten Eingaben.
  */
@@ -22,6 +27,12 @@ public final class ChessGame extends Observable {
      * @param args uebergebener Startparameter
      */
     ChessGame(final String[] args) {
+        //API Śpieler und BOT
+        Player p1 = new Player("player one", Color.WHITE);
+        Chesster p2 = new Chesster("Schach Bot", Color.BLACK);
+        //Spielinitialisierung über API
+        Game chessGame = new Game.newGame(p1, p2);
+
         chessBoard = new ChessBoard();
         chessTurn = new ChessTurn();
         if (args.length == 1 && args[0].equals("standardgui")) {
