@@ -42,11 +42,24 @@ public final class ChessGame extends Observable {
         }
     }
 
+    /**
+     * Method to take a turn when playing with gui.
+     * @param startrow on chessfield.
+     * @param startcolumn on chessfield.
+     * @param endrow on chessfield.
+     * @param endcolumn on chessfield.
+     * @param chessBoard object for saved array.
+     */
     public void guiturn(int startrow, int startcolumn, int endrow, int endcolumn, ChessBoard chessBoard) {
         chessTurn.guiturn(startrow, startcolumn, endrow, endcolumn, chessBoard);
         setChanged();
         notifyObservers();
     }
+
+    /**
+     * Updates game/array, i.e. when a .fen-file is loaded.
+     * @param input has the new linup.
+     */
     public void changeGame(String[] input) {
         try {
             chessTurn.checkStartInput(input, chessBoard);

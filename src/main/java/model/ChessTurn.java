@@ -82,7 +82,8 @@ public class ChessTurn extends Observable {
                         final int endrow = VALID_TURN_NUMBERS.indexOf(char4);
                         final int endcolumm = VALID_TURN_CHARS.indexOf(char3);
                         if (chessboard.hasChessPiece(startrow, startcolumn)) {
-                            final String chesspiece = ChessPiece.getBez(chessboard.getChessPiece(startrow, startcolumn));
+                            final String chesspiece = ChessPiece.getBez(chessboard.getChessPiece(
+                                startrow, startcolumn));
                             final boolean whitepiece = chesspiece.equals(chesspiece.toUpperCase());
                             if (whiteturn && whitepiece || !whiteturn && !whitepiece) {
                                 if (startrow != endrow || startcolumn != endcolumm) {

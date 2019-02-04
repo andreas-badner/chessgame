@@ -8,7 +8,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
 
-import javafx.fxml.FXML;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -38,11 +37,7 @@ public class ChessController implements Observer {
 
     private CreateChessBoard createChessBoard = new CreateChessBoard();
 
-
-    public ChessController() {
-    }
-
-    public void menu(ActionEvent event) throws IOException {
+    public void menu() {
         visualize();
     }
 
@@ -79,7 +74,8 @@ public class ChessController implements Observer {
         for (int row = 0; row < COLUMN_ROW_COUNT; row++) {
             for (int column = 0; column < COLUMN_ROW_COUNT; column++) {
                 if (chessGame.chessBoard.hasChessPiece(row, column)) {
-                    createChessBoard.insertChessPiece(row, column, model.ChessPiece.getBez(chessGame.chessBoard.getChessPiece(row, column)));
+                    createChessBoard.insertPiece(row, column, model.ChessPiece.getBez(
+                        chessGame.chessBoard.getChessPiece(row, column)));
                 }
             }
         }
@@ -100,6 +96,12 @@ public class ChessController implements Observer {
         insertChessPiece();
     }
 
+    /**
+     * handles a mouseclick event on the chessboard.
+     *
+     * @param row    the row indicates the field on the board to find the piece
+     * @param column the column indicates the field on the board to find the piece
+     */
     public void mouseclick(int row, int column) {
         String chessPiece = ChessPiece.getBez(chessGame.chessBoard.getChessPiece(row, column));
         if (counter == 0) {
@@ -130,7 +132,8 @@ public class ChessController implements Observer {
                 createChessBoard.highlightfield(row, column);
             } else {
                 createChessBoard.removehighlight(rowlist.get(0), columnlist.get(0));
-                chessGame.guiturn(rowlist.get(0), columnlist.get(0), rowlist.get(1), columnlist.get(1), chessGame.chessBoard);
+                chessGame.guiturn(rowlist.get(0), columnlist.get(0), rowlist.get(1), columnlist.get(1),
+                                  chessGame.chessBoard);
                 rowlist.clear();
                 columnlist.clear();
                 counter = 0;
@@ -138,6 +141,9 @@ public class ChessController implements Observer {
         }
     }
 
+    /**
+     * Saves the current game in a .fen-file.
+     */
     public void savegame() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Game");
@@ -149,6 +155,9 @@ public class ChessController implements Observer {
         }
     }
 
+    /**
+     * Loads the chosen .fen-file to play a saved game.
+     */
     public void loadgame() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Load Game");

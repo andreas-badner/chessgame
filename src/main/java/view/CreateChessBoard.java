@@ -56,9 +56,6 @@ public class CreateChessBoard {
 
     private GridPane gpane;
 
-    public CreateChessBoard() {
-    }
-
     /**
      * Erstellt ein visuelles Schachbrett in Standardaufstellung.
      */
@@ -74,7 +71,7 @@ public class CreateChessBoard {
      * @param column Die Spalte auf dem Spielbrett.
      * @param piece  Die Bezeichung der Figur.
      */
-    public void insertChessPiece(int row, int column, String piece) {
+    public void insertPiece(int row, int column, String piece) {
         switch (piece) {
             case "p":
                 Image bpawn1 = new Image(BLACKPAWN);
@@ -178,9 +175,10 @@ public class CreateChessBoard {
     }
 
     /**
-     * Setting up the ChessBoard.
-     *
-     * @param stage Using the existing Stage.
+     * Creates a new updated chessboard over the old one.
+     * @param stage Uses the old stage.
+     * @param chessController Uses the controller object to call for eventhandling.
+     * @param start Player, who can move next.
      */
     public void visualize(Stage stage, ChessController chessController, String start) {
         for (int row = 0; row < COLUMN_ROW_COUNT; row++) {
@@ -232,6 +230,11 @@ public class CreateChessBoard {
         stage.setScene(scene);
     }
 
+    /**
+     * Highlights the clicked field.
+     * @param row Takes row to find the field.
+     * @param column Takes column to find the field.
+     */
     public void highlightfield(int row, int column) {
         Light.Distant light = new Light.Distant();
         light.setAzimuth(0);
@@ -244,6 +247,11 @@ public class CreateChessBoard {
         }
     }
 
+    /**
+     * Removes the added highlight.
+     * @param row Takes row to find field.
+     * @param column Takes column to find field.
+     */
     public void removehighlight(int row, int column) {
         Node node = getNode(row, column);
         if (node != null) {
